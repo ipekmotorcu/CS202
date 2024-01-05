@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="Valla yaptık bir şeyler.&#10;Buraya yazasım gelmiyor açık açık :/">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DoctorLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/NurseView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/benimDeneme.java" afterDir="false" />
+    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="deneme">
+      <change afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatientSignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientSignUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/WelcomingWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WelcomingWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NurseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NurseView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,23 +41,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/ipekm/Downloads/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -69,20 +67,6 @@
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="CS202Projesi" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Registration" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Registration" />
-      <module name="CS202Projesi" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="benimDeneme" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="benimDeneme" />
       <module name="CS202Projesi" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -101,8 +85,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.benimDeneme" />
-        <item itemvalue="Application.Registration" />
         <item itemvalue="JUnit.testPatient.testPatientSignUp" />
       </list>
     </recent_temporary>
@@ -116,9 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1704186445741</updated>
       <workItem from="1704186447312" duration="319000" />
-      <workItem from="1704297556459" duration="6372000" />
-      <workItem from="1704394040054" duration="2668000" />
-      <workItem from="1704445833827" duration="2095000" />
+      <workItem from="1704297556459" duration="6325000" />
     </task>
     <task id="LOCAL-00001" summary="deneme">
       <created>1704186521929</created>
@@ -134,14 +114,7 @@
       <option name="project" value="LOCAL" />
       <updated>1704187849575</updated>
     </task>
-    <task id="LOCAL-00003" summary="Valla yaptık bir şeyler.&#10;Buraya yazasım gelmiyor açık açık :/">
-      <created>1704310895073</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1704310895073</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,7 +123,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="deneme" />
     <MESSAGE value="Emin frame ve panel'lerle ilgili bazı denemelerde bulunuyor.&#10;İpek de izliyor." />
-    <MESSAGE value="Valla yaptık bir şeyler.&#10;Buraya yazasım gelmiyor açık açık :/" />
-    <option name="LAST_COMMIT_MESSAGE" value="Valla yaptık bir şeyler.&#10;Buraya yazasım gelmiyor açık açık :/" />
+    <option name="LAST_COMMIT_MESSAGE" value="Emin frame ve panel'lerle ilgili bazı denemelerde bulunuyor.&#10;İpek de izliyor." />
   </component>
 </project>

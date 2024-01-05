@@ -1,14 +1,13 @@
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicOptionPaneUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.PathIterator;
-import java.util.EventListener;
+import java.sql.*;
+import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args){
-        PatientSignUp signUp = new PatientSignUp();
+    public static void main(String[] args) throws SQLException {
+        //PatientSignUp signUp = new PatientSignUp();
 
         //PatientView patientView = new PatientView();
 
@@ -16,6 +15,10 @@ public class Main {
 
         //NurseView nurseView = new NurseView();
 
+        //Statement stmt = DBConnection.getConnection().createStatement();
+        //ResultSet resultSet = stmt.executeQuery("select * from doctor;");
+
+        System.out.println(NurseView.viewRoomAvailability());
 
     }
 

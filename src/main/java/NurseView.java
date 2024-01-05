@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class NurseView {
     public NurseView(){
@@ -62,5 +64,19 @@ public class NurseView {
     }
 
 
+    public static ArrayList<String> viewRoomAvailability() throws SQLException {
+        ArrayList<String> result = new ArrayList<>();
+        Statement stmt =  DBConnection.getConnection().createStatement();
+        ResultSet rs = stmt.executeQuery("select * from occupied");
+        while(rs.next()){
 
+            result.add (rs.getString(1));
+            result.add (rs.getString(2));
+            result.add (rs.getString(3));
+            result.add(rs.getString(4));
+
+
+        }
+        return result;
+    }
 }
