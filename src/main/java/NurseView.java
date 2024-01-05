@@ -1,9 +1,10 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.nimbus.State;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-import java.util.ArrayList;
 
 public class NurseView {
     public NurseView(){
@@ -33,7 +34,12 @@ public class NurseView {
         showApps.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PatientView.showPastApps();
+                //PatientView.showPastApps();
+                try {
+                    viewRoomAvailability();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -63,20 +69,39 @@ public class NurseView {
         frame.setVisible(true);
     }
 
+    public static void viewRoomAvailability() throws SQLException {
+        JFrame frame = new JFrame("Room Availabilities");
+        JLabel label = new JLabel("date    starting hour     finishing hour");
+        //label.setSize(new Dimension(700,300)); BURASI GARİP GÖRÜNÜYOR.
+        //label.setFont();
 
-    public static ArrayList<String> viewRoomAvailability() throws SQLException {
-        ArrayList<String> result = new ArrayList<>();
-        Statement stmt =  DBConnection.getConnection().createStatement();
-        ResultSet rs = stmt.executeQuery("select * from occupied");
+        JTextArea text = new JTextArea("Lorem ipsum\nDolor sit amet");
+
+
+        Statement stmt = DBConnection.getConnection().createStatement();
+        ResultSet rs = stmt.executeQuery("select * from for_nurse");
+
+        String view = "date                 starting hour            finishing hour\n";
         while(rs.next()){
-
-            result.add (rs.getString(1));
-            result.add (rs.getString(2));
-            result.add (rs.getString(3));
-            result.add(rs.getString(4));
-
-
+            view += rs.getString(1);
+            view += "    "+rs.getString(2);
+            view += "                    "+rs.getString(3)+ "\n";
+            //view += "    "+rs.getString(4) + "\n";
         }
-        return result;
+        text.setText(view);
+
+        frame.add(text);
+        //frame.add(label,BorderLayout.NORTH);
+        //frame.add(text, BorderLayout.SOUTH);
+
+        //frame.setLayout(new GridLayout(2,1));
+        frame.setSize(700,500);
+        frame.setVisible(true);
+
+
+
     }
+
+
+
 }

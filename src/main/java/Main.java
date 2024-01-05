@@ -1,9 +1,11 @@
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicOptionPaneUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.*;
+import java.awt.geom.PathIterator;
 import java.sql.SQLException;
+import java.util.EventListener;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -15,10 +17,9 @@ public class Main {
 
         //NurseView nurseView = new NurseView();
 
-        //Statement stmt = DBConnection.getConnection().createStatement();
-        //ResultSet resultSet = stmt.executeQuery("select * from doctor;");
+        //NurseView.viewRoomAvailability();
 
-        System.out.println(NurseView.viewRoomAvailability());
+        DoctorView.declareUnavailability("2024-05-15", "11:00:00", "13:00:00", 911);
 
     }
 
@@ -60,4 +61,6 @@ public class Main {
         frame.setVisible(true);
 
     }
+
+
 }
