@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="Valla yaptık bir şeyler.&#10;Buraya yazasım gelmiyor açık açık :/">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DoctorLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/NurseView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/benimDeneme.java" afterDir="false" />
+    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="Son zımbırıkları da ekledim">
+      <change afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DoctorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DoctorView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatientSignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientSignUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/WelcomingWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WelcomingWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NurseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NurseView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +116,7 @@
       <workItem from="1704186447312" duration="319000" />
       <workItem from="1704297556459" duration="6372000" />
       <workItem from="1704394040054" duration="2668000" />
-      <workItem from="1704445833827" duration="2095000" />
+      <workItem from="1704445833827" duration="6794000" />
     </task>
     <task id="LOCAL-00001" summary="deneme">
       <created>1704186521929</created>
@@ -141,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704310895073</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Son zımbırıkları da ekledim">
+      <created>1704448971560</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1704448971560</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +156,7 @@
     <MESSAGE value="deneme" />
     <MESSAGE value="Emin frame ve panel'lerle ilgili bazı denemelerde bulunuyor.&#10;İpek de izliyor." />
     <MESSAGE value="Valla yaptık bir şeyler.&#10;Buraya yazasım gelmiyor açık açık :/" />
-    <option name="LAST_COMMIT_MESSAGE" value="Valla yaptık bir şeyler.&#10;Buraya yazasım gelmiyor açık açık :/" />
+    <MESSAGE value="Son zımbırıkları da ekledim" />
+    <option name="LAST_COMMIT_MESSAGE" value="Son zımbırıkları da ekledim" />
   </component>
 </project>

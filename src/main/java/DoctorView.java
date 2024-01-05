@@ -1,7 +1,10 @@
 import javax.swing.*;
+import javax.swing.plaf.nimbus.State;
+import javax.xml.transform.Result;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 public class DoctorView {
     public DoctorView(){
@@ -61,6 +64,21 @@ public class DoctorView {
         frame.setVisible(true);
     }
 
-
+    /**
+     * ÇALIŞMAYOR. ZATEN BÖYLE ÇALIŞMAMASI LAZIM.
+     * ÇÜNKÜ HACKERLER...
+     * @param date
+     * @param starting_hour
+     * @param finishing_hour
+     * @param DoctorId
+     */
+    public static void declareUnavailability(String date, String starting_hour, String finishing_hour, int DoctorId){
+        try{
+            Statement stmt = DBConnection.getConnection().createStatement();
+            stmt.executeUpdate("insert into Unavailability values (date, starting_hour, finishing_hour_ DoctorId)");}
+        catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
 }
