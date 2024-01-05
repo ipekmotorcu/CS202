@@ -21,8 +21,15 @@ public class WelcomingWindow {
             DoctorView doctorView = new DoctorView();
         });
 
+        JButton nurseButton = new JButton("El ver bacım");
+
+        nurseButton.addActionListener(e -> {
+            NurseView nurseView = new NurseView();
+        });
+
         patient.add(patientButton);
         patient.add(doctorButton);
+        patient.add(nurseButton);
         frame.add(patient);
 
 

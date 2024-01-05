@@ -8,16 +8,15 @@ import java.util.EventListener;
 
 public class Main {
     public static void main(String[] args){
-        //PatientSignUp signUp = new PatientSignUp();
+        PatientSignUp signUp = new PatientSignUp();
 
         //PatientView patientView = new PatientView();
 
-        WelcomingWindow welcomingWindow = new WelcomingWindow();
+        //WelcomingWindow welcomingWindow = new WelcomingWindow();
 
-       /* String s = "hololo-anan-baban";
-        String[] yeni = s.split("-");
-        for(String y : yeni)
-            System.out.println(y);*/
+        //NurseView nurseView = new NurseView();
+
+
     }
 
     public static void denemeler(){

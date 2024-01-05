@@ -6,30 +6,52 @@ import java.awt.event.ActionListener;
 /**
  * ismi iyi olmamış olabilir. yeni kayıt oluştururken bunu kullanırız diye düşündüm.
  */
-public class PatientSignUp {
-    /**
-     * biliyorum, biliyorum çirkin
-     */
-    public PatientSignUp(){
+public class benimDeneme {
+
+    public static void main(String[] args) throws Exception
+    {
+        benimDeneme f = new benimDeneme();
+    }
+
+
+    public benimDeneme(){
         JFrame frame = new JFrame("Register Frame");
 
-        JPanel panel = new JPanel();
-        JPanel panel2 = new JPanel();
-        JPanel tamam = new JPanel();
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setBounds(300,30,600,400);
+        //frame.setSize(new Dimension(600,400));
+        frame.setResizable(false);
+
+
+        Container c = frame.getContentPane();
+
+
 
         JLabel id = new JLabel("TC Kimlik No");
+        id.setSize(300, 30);
+        id.setLocation(300, 30);
+        c.add(id);
+
         JTextField idTxt = new JTextField(15);
         idTxt.setText("***************");
-
-        panel.add(id); panel.add(idTxt);
+        idTxt.setSize(300, 30);
+        idTxt.setLocation(300, 60);
+        c.add(idTxt);
 
         JLabel pass = new JLabel("Şifreniz");
+        pass.setSize(300, 30);
+        pass.setLocation(0, 30);
+        c.add(pass);
+
+
         JTextField passTxt = new JTextField(15);
         passTxt.setText("***************");
-        panel2.add(pass); panel2.add(passTxt);
+        passTxt.setSize(300, 30);
+        passTxt.setLocation(0, 60);
+        c.add(passTxt);
 
         JButton tamamBut = new JButton("Tamam");
-        tamam.add(tamamBut);
+        c.add(tamamBut);
 
         tamamBut.addActionListener(new ActionListener() {
             @Override
@@ -43,24 +65,15 @@ public class PatientSignUp {
 
 
 
-        panel.setLayout(new GridLayout());
-        panel2.setLayout(new GridLayout());
         //panel2.setLayout(new BoxLayout(panel2, BoxLayout.LINE_AXIS)); Olacak şey değil yahu
 
-        frame.add(panel);
-        frame.add(panel2);
-        frame.add(tamam);
 
         String[] ads = {"1","2","3"};
-        frame.add(new JComboBox(ads)); //wow
+        c.add(new JComboBox<>(ads)); //wow
+
+        //c.setLayout(new GridLayout(3,2));
 
 
-
-
-        frame.setLayout(new GridLayout(3,1));
-
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(600,400));
         frame.setVisible(true);
     }
 
