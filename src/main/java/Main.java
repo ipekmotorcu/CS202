@@ -9,16 +9,15 @@ import java.util.EventListener;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-
+        //PatientSignUp signUp = new PatientSignUp();
 
         //PatientView patientView = new PatientView();
 
-        //WelcomingWindow welcomingWindow = he new WelcomingWindow();
+        WelcomingWindow welcomingWindow = new WelcomingWindow();
 
-        //NurseLogin nurseLogin = new NurseLogin();
-        DoctorLogin nurseLogin = new DoctorLogin();
-        //PatientSignUp signUp = new PatientSignUp();
-        //NurseView.viewUpcomingRooms(201);
+        //NurseView nurseView = new NurseView();
+
+        //NurseView.viewRoomAvailability();
 
         //DoctorView.declareUnavailability("2024-05-15", "11:00:00", "13:00:00", 911);
 

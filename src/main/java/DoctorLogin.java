@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.sql.*;
 
 public class DoctorLogin {
     public DoctorLogin(){
@@ -21,7 +22,7 @@ public class DoctorLogin {
         id.setLocation(150, 60);
         c.add(id);
 
-        JTextField idTxt = new JTextField(15); idTxt.setText("***************");
+        JTextField idTxt = new JTextField(15); idTxt.setText("");
         idTxt.setSize(250,30);
         idTxt.setLocation(250, 60);
         c.add(idTxt);
@@ -32,7 +33,7 @@ public class DoctorLogin {
         pass.setLocation(150, 95);
         c.add(pass);
 
-        JTextField passTxt = new JTextField(15); passTxt.setText("***************");
+        JTextField passTxt = new JTextField(15); passTxt.setText("");
         passTxt.setSize(250,30);
         passTxt.setLocation(250, 95);
         c.add(passTxt);
@@ -44,7 +45,8 @@ public class DoctorLogin {
         enter.addActionListener(e-> {
             try{
                 int doctorId= Integer.parseInt(idTxt.getText());
-                enter(doctorId);
+                String password= passTxt.getText();
+                enter(doctorId,password);
             }
 
             catch(NumberFormatException nfe){
@@ -76,11 +78,44 @@ public class DoctorLogin {
         frame.setMinimumSize(new Dimension(700,400));
         frame.setVisible(true);
     }
-
+    Connection connection = DBConnection.getConnection();//bunu böyle yazmamız lazım prepared statement için
     /**
      * Bunun şifre ve kimlik numarasını kontrol falan etmesi lazım aslında.
+     *
+     * kimlik numarasını ve şifreyi kontrol ediyor geçerli değilse uyarıyor
+     * Prepared statement kullandım burada çünkü hoca mailde öyle yazmış
+     *
+     * Hashleme kısmına bakmadım daha onun için databasedeki şifreleri de değiştirmemiz gerekecek!!
      */
-    private void enter(int doctorId) {
-        DoctorView doctorView = new DoctorView(doctorId);
+    private void enter(int doctorId,String password) {
+
+
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement("select doc_password  from Doctor where doctor_id = ? ");
+
+            stmt.setString(1, String.valueOf(doctorId));
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+               // System.out.println(rs.getString(1)+password);
+                if (rs.getString(1).equals(password)){
+                    DoctorView doctorView = new DoctorView(doctorId);
+                }
+                else{
+                    JFrame popup = new JFrame("Nope");
+                    popup.add(new JLabel("Enter a valid ID number and password"));
+                    popup.setMinimumSize(new Dimension(250,150));
+                    popup.setLocation(500,200);
+                    popup.setVisible(true);
+                }
+            }
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 }
