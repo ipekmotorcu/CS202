@@ -7,7 +7,10 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class NurseView {
-    public NurseView(){
+    int nurseId;
+    public NurseView(int nurseId){
+        this.nurseId = nurseId;
+
         JFrame frame = new JFrame("Hemşire Ekranına Hoşgeldiniz");
 
         JPanel panel = new JPanel();

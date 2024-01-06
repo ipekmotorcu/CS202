@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="Son zımbırıkları da ekledim">
+    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="Şifre yanlış girildiğinde de popup çıksın.&#10;Bunun için resultset boş mu diye bakabilmek lazım:&#10;Onu da &quot;if(!rs.isBeforeFirst())&quot; ile yapabiliyoruz. Çünkü resultset'in pointer'ı ilk yaratıldığında &quot;ilk satırın hemen öncesi&quot;ni gösteriyor (bunu geçen projede öğrenmiştik). Eğer ilk satır mevcut değilse bu metot doğrudan &quot;false&quot; döndürüyor.&#10;if(!rs.isBeforeFirst()){">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/LegacyDoctorLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatientLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DoctorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DoctorLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NurseLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NurseLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NurseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NurseView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PatientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WelcomingWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WelcomingWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704448971560</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Şifre yanlış girildiğinde de popup çıksın.&#10;Bunun için resultset boş mu diye bakabilmek lazım:&#10;Onu da &quot;if(!rs.isBeforeFirst())&quot; ile yapabiliyoruz. Çünkü resultset'in pointer'ı ilk yaratıldığında &quot;ilk satırın hemen öncesi&quot;ni gösteriyor (bunu geçen projede öğrenmiştik). Eğer ilk satır mevcut değilse bu metot doğrudan &quot;false&quot; döndürüyor.&#10;if(!rs.isBeforeFirst()){">
+      <created>1704548253358</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1704548253358</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +181,7 @@
     <MESSAGE value="Emin frame ve panel'lerle ilgili bazı denemelerde bulunuyor.&#10;İpek de izliyor." />
     <MESSAGE value="Valla yaptık bir şeyler.&#10;Buraya yazasım gelmiyor açık açık :/" />
     <MESSAGE value="Son zımbırıkları da ekledim" />
-    <option name="LAST_COMMIT_MESSAGE" value="Son zımbırıkları da ekledim" />
+    <MESSAGE value="Şifre yanlış girildiğinde de popup çıksın.&#10;Bunun için resultset boş mu diye bakabilmek lazım:&#10;Onu da &quot;if(!rs.isBeforeFirst())&quot; ile yapabiliyoruz. Çünkü resultset'in pointer'ı ilk yaratıldığında &quot;ilk satırın hemen öncesi&quot;ni gösteriyor (bunu geçen projede öğrenmiştik). Eğer ilk satır mevcut değilse bu metot doğrudan &quot;false&quot; döndürüyor.&#10;if(!rs.isBeforeFirst()){" />
+    <option name="LAST_COMMIT_MESSAGE" value="Şifre yanlış girildiğinde de popup çıksın.&#10;Bunun için resultset boş mu diye bakabilmek lazım:&#10;Onu da &quot;if(!rs.isBeforeFirst())&quot; ile yapabiliyoruz. Çünkü resultset'in pointer'ı ilk yaratıldığında &quot;ilk satırın hemen öncesi&quot;ni gösteriyor (bunu geçen projede öğrenmiştik). Eğer ilk satır mevcut değilse bu metot doğrudan &quot;false&quot; döndürüyor.&#10;if(!rs.isBeforeFirst()){" />
   </component>
 </project>
