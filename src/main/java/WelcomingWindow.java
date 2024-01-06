@@ -18,13 +18,13 @@ public class WelcomingWindow {
         JButton doctorButton = new JButton("El çek ilacımdan tabib");
 
         doctorButton.addActionListener(e -> {
-            DoctorView doctorView = new DoctorView();
+            DoctorLogin doctorLogin = new DoctorLogin();
         });
 
         JButton nurseButton = new JButton("El ver bacım");
 
         nurseButton.addActionListener(e -> {
-            NurseView nurseView = new NurseView();
+            NurseLogin nurseLogin = new NurseLogin();
         });
 
         patient.add(patientButton);

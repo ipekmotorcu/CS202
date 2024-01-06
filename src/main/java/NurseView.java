@@ -7,15 +7,18 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class NurseView {
-    public NurseView(){
+
+    int nurseId;
+
+    public NurseView(int nurseId){
+        this.nurseId = nurseId;
+
+
         JFrame frame = new JFrame("Hemşire Ekranına Hoşgeldiniz");
 
         JPanel panel = new JPanel();
         JPanel panel2 = new JPanel();
         JPanel panel3 = new JPanel();
-
-        //JLabel id = new JLabel("TC Kimlik No");
-        //JTextField idTxt = new JTextField(15);
 
 
 
@@ -28,19 +31,21 @@ public class NurseView {
 
         panel3.add(startDate); panel3.add(endDate);
 
-        JButton showApps = new JButton("Randevularımı Göster");
+        JButton showRoomAvailabilities = new JButton("Show Room Availabilities");
+        panel.add(showRoomAvailabilities);
+
+        JButton showApps = new JButton("Show Upcoming Room Assignments");
         panel.add(showApps);
 
-        showApps.addActionListener(new ActionListener() {
+        showRoomAvailabilities.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //PatientView.showPastApps();
-                try {
                     viewRoomAvailability();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
             }
+        });
+
+        showApps.addActionListener(e -> {
+            viewUpcomingRooms(nurseId);
         });
 
         JButton tarihTamam = new JButton("Tamam");
@@ -69,17 +74,18 @@ public class NurseView {
         frame.setVisible(true);
     }
 
-    public static void viewRoomAvailability() throws SQLException {
+    /**
+     * Bunda enjeksiyona karşı korunacak bir durum yok.
+     */
+    public static void viewRoomAvailability()  {
         JFrame frame = new JFrame("Room Availabilities");
-        JLabel label = new JLabel("date    starting hour     finishing hour");
-        //label.setSize(new Dimension(700,300)); BURASI GARİP GÖRÜNÜYOR.
-        //label.setFont();
 
         JTextArea text = new JTextArea("Lorem ipsum\nDolor sit amet");
-
-
-        Statement stmt = DBConnection.getConnection().createStatement();
-        ResultSet rs = stmt.executeQuery("select * from for_nurse");
+        Statement stmt;
+        ResultSet rs;
+        try {
+            stmt = DBConnection.getConnection().createStatement();
+            rs = stmt.executeQuery("select * from for_nurse");
 
         String view = "date                 starting hour            finishing hour\n";
         while(rs.next()){
@@ -90,6 +96,11 @@ public class NurseView {
         }
         text.setText(view);
 
+        }
+        catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
         frame.add(text);
         //frame.add(label,BorderLayout.NORTH);
         //frame.add(text, BorderLayout.SOUTH);
@@ -97,11 +108,37 @@ public class NurseView {
         //frame.setLayout(new GridLayout(2,1));
         frame.setSize(700,500);
         frame.setVisible(true);
-
-
-
     }
 
+    /**
+     * uses the nurseId from the login page and shows the upcoming rooms for that nurse.
+     * uses the app_status field in Appointment entity to check if the appointment is upcoming or if it passed.
+     * @param nurseId the nurse id given by the caller.
+     */
+    public static void viewUpcomingRooms(int nurseId){
+        JFrame frame = new JFrame("Your Upcoming Rooms");
+        JTextArea txt = new JTextArea("You don't have any rooms lad. One should assign you something!");
+
+        Statement stmt;
+        ResultSet rs;
+        try{
+            stmt = DBConnection.getConnection().createStatement();
+            rs = stmt.executeQuery("select ass.room_id from Appointment as app, assigns_room as ass where ass.nurse_id = "+ nurseId+ " and app.app_id = ass.app_id and app.app_status = 'Scheduled'");
+
+            String rooms = "For the nurse having the id " + nurseId + " the following are the upcoming rooms:\n\n";
+            while(rs.next()){
+                rooms += "Room id: "+rs.getString(1)+"\n";
+            }
+            txt.setText(rooms);
+        }
+        catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+
+        frame.add(txt);
+        frame.setSize(700,500);
+        frame.setVisible(true);
+    }
 
 
 }
