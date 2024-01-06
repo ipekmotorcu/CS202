@@ -7,7 +7,10 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class DoctorView {
-    public DoctorView(){
+    int doctorId;
+    public DoctorView(int doctorId){
+        this.doctorId =doctorId;
+
         JFrame frame = new JFrame("Doktor Ekranına Hoşgeldiniz");
 
         JPanel panel = new JPanel();
@@ -75,7 +78,7 @@ public class DoctorView {
     public static void declareUnavailability(String date, String starting_hour, String finishing_hour, int DoctorId){
         try{
             Statement stmt = DBConnection.getConnection().createStatement();
-            stmt.executeUpdate("insert into Unavailability values (date, starting_hour, finishing_hour_ DoctorId)");}
+            stmt.executeUpdate("insert into Unavailability values ('"+date+"', '"+starting_hour+"', '"+finishing_hour+"', "+DoctorId+")");}
         catch (SQLException ex) {
             throw new RuntimeException(ex);
         }

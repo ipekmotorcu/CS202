@@ -69,7 +69,7 @@ public class benimDeneme {
 
 
         String[] ads = {"1","2","3"};
-        c.add(new JComboBox<>(ads)); //wow
+        //c.add(new JComboBox<>(ads)); //wow
 
         //c.setLayout(new GridLayout(3,2));
 
