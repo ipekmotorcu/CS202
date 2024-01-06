@@ -96,6 +96,13 @@ public class DoctorLogin {
 
             stmt.setString(1, String.valueOf(doctorId));
             ResultSet rs = stmt.executeQuery();
+            if(!rs.isBeforeFirst()){
+                JFrame popup = new JFrame("Nope");
+                popup.add(new JLabel("Incorrect ID or Password"));
+                popup.setMinimumSize(new Dimension(250,150));
+                popup.setLocation(500,200);
+                popup.setVisible(true);
+            }
             while(rs.next()){
                // System.out.println(rs.getString(1)+password);
                 if (rs.getString(1).equals(password)){
