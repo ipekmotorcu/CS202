@@ -124,6 +124,9 @@ public class Login {
                         case("Nurse"):
                             NurseView nurseView = new NurseView(Id);
                             break;
+                        case("Admin"):
+                            AdminView adminView = new AdminView(Id);
+                            break;
                     }
 
                     return true;

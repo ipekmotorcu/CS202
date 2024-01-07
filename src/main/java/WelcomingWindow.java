@@ -26,7 +26,14 @@ public class WelcomingWindow {
         nurseButton.addActionListener(e -> {
             NurseLogin nurseLogin = new NurseLogin();
         });
+//Admin
+        JButton adminButton = new JButton("Admin");
 
+        adminButton.addActionListener(e -> {
+            AdminLogin adminLogin = new AdminLogin();
+        });
+
+        patient.add(adminButton);
         patient.add(patientButton);
         patient.add(doctorButton);
         patient.add(nurseButton);
