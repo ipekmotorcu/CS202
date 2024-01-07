@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.EventListener;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws Exception {
         //PatientSignUp signUp = new PatientSignUp();
 
         //PatientView patientView = new PatientView();
@@ -20,6 +20,7 @@ public class Main {
         //NurseView.viewRoomAvailability();
 
         //DoctorView.declareUnavailability("2024-05-15", "11:00:00", "13:00:00", 911);
+        //System.out.println(Cryptography.encrypt("pass123",Cryptography.generateSecretKey()));
 
 
 

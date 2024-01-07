@@ -41,7 +41,7 @@ public class Login {
         pass.setLocation(150, 95);
         c.add(pass);
 
-        JTextField passTxt = new JTextField(15); passTxt.setText("");
+        JPasswordField  passTxt = new JPasswordField (15);
         passTxt.setSize(250,30);
         passTxt.setLocation(250, 95);
         c.add(passTxt);
@@ -113,7 +113,7 @@ public class Login {
             }
             while(rs.next()){
                 // System.out.println(rs.getString(1)+password);
-                if (rs.getString(1).equals(pass)){
+                if (rs.getString(1).equals(Cryptography.encrypt(pass,Cryptography.generateSecretKey()))){
                     switch (type){
                         case("Patient"):
                             PatientView patientView = new PatientView(Id);
@@ -142,7 +142,7 @@ public class Login {
 
 
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
