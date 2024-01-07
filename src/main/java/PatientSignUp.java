@@ -89,7 +89,7 @@ public class PatientSignUp {
                 popup.setVisible(true);
             } catch (Exception ex) {
                 JFrame popup = new JFrame("Nope");
-                popup.add(new JLabel("Duplicate Entry!!"));
+                popup.add(new JLabel("Something Went Wrong :/"));
                 popup.setMinimumSize(new Dimension(250,150));
                 popup.setLocation(500,200);
                 popup.setVisible(true);
@@ -123,12 +123,13 @@ public class PatientSignUp {
         stmt.executeUpdate();
 
 
-        JFrame popup = new JFrame("Nope");
+        JFrame popup = new JFrame("Yep");
         popup.add(new JLabel("Your Account has been Successfully Created"));
         popup.setMinimumSize(new Dimension(300,150));
         popup.setLocation(500,200);
+
         popup.setVisible(true);
 
-        return false;
+        return true;
     }
 }
