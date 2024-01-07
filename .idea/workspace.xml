@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="şifreler artık güvende">
+    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="PatientSignUp ı oluşturdum ama bunu giriş ekranına nasıl bağlarız emin değilim">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/PatientSignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientSignUp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,6 +114,7 @@
       <workItem from="1704297556459" duration="6372000" />
       <workItem from="1704394040054" duration="2668000" />
       <workItem from="1704445833827" duration="6794000" />
+      <workItem from="1704646400326" duration="2338000" />
     </task>
     <task id="LOCAL-00001" summary="deneme">
       <created>1704186521929</created>
@@ -165,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704639789307</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="PatientSignUp ı oluşturdum ama bunu giriş ekranına nasıl bağlarız emin değilim">
+      <created>1704643478392</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1704643478392</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +197,7 @@
     <MESSAGE value="Şifre yanlış girildiğinde de popup çıksın.&#10;Bunun için resultset boş mu diye bakabilmek lazım:&#10;Onu da &quot;if(!rs.isBeforeFirst())&quot; ile yapabiliyoruz. Çünkü resultset'in pointer'ı ilk yaratıldığında &quot;ilk satırın hemen öncesi&quot;ni gösteriyor (bunu geçen projede öğrenmiştik). Eğer ilk satır mevcut değilse bu metot doğrudan &quot;false&quot; döndürüyor.&#10;if(!rs.isBeforeFirst()){" />
     <MESSAGE value="AdminLogin eklendi" />
     <MESSAGE value="şifreler artık güvende" />
-    <option name="LAST_COMMIT_MESSAGE" value="şifreler artık güvende" />
+    <MESSAGE value="PatientSignUp ı oluşturdum ama bunu giriş ekranına nasıl bağlarız emin değilim" />
+    <option name="LAST_COMMIT_MESSAGE" value="PatientSignUp ı oluşturdum ama bunu giriş ekranına nasıl bağlarız emin değilim" />
   </component>
 </project>

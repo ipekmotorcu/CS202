@@ -106,13 +106,22 @@ public class PatientSignUp {
         frame.setMinimumSize(new Dimension(700,400));
         frame.setVisible(true);
     }
-
+    Connection connection = DBConnection.getConnection();//bunu böyle yazmamız lazım prepared statement için
 
     private boolean enter(int Id,String password,String name) throws Exception {
+       // PreparedStatement stmt = connection.prepareStatement("select "+userType+"_password  from "+type+" where "+type+"_id = ? ");
+
+
+
 
         password= Cryptography.encrypt(password,Cryptography.generateSecretKey());
-        Statement stmt = DBConnection.getConnection().createStatement();
-        stmt.executeUpdate("insert into Patient values ( "+Id+", '"+ password +"' ,'"+ name+"')");
+
+        PreparedStatement stmt = connection.prepareStatement("insert into Patient values ( ?,  ?  ,?)");
+        stmt.setString(1, String.valueOf(Id));
+        stmt.setString(2, String.valueOf(password));
+        stmt.setString(3, String.valueOf(name));
+        stmt.executeUpdate();
+
 
         JFrame popup = new JFrame("Nope");
         popup.add(new JLabel("Your Account has been Successfully Created"));
