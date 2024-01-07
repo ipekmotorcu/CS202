@@ -1,0 +1,78 @@
+Index: src/main/java/DBConnection.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.sql.*;\r\npublic class DBConnection {\r\n    final static String url = \"jdbc:mysql://localhost:3306/proje\"; //projenin adı.\r\n    final static String user = \"root\"; //username and password of mysql\r\n    final static String password = \"12341234\";\r\n\r\n\r\n    public static Connection getConnection(){\r\n        Connection myConn = null;\r\n\r\n        try{\r\n            myConn = DriverManager.getConnection(url, user, password);\r\n        } catch (Exception e){\r\n            System.out.println(\"\\n>>> ERROR! The Program Can NOT Connect to the Database. <<<\");\r\n        }\r\n        return myConn; //so this returns a Connection object.\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/DBConnection.java b/src/main/java/DBConnection.java
+--- a/src/main/java/DBConnection.java	(revision f19fa7ba2b13627355d48f0beba71294a1c13848)
++++ b/src/main/java/DBConnection.java	(date 1704542495771)
+@@ -2,7 +2,7 @@
+ public class DBConnection {
+     final static String url = "jdbc:mysql://localhost:3306/proje"; //projenin adı.
+     final static String user = "root"; //username and password of mysql
+-    final static String password = "12341234";
++    final static String password = "im66709903";
+ 
+ 
+     public static Connection getConnection(){
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"8233834e-6a4b-4ef6-b8f5-50d730d6836b\" name=\"Changes\" comment=\"Son zımbırıkları da ekledim\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/AdminView.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/DBConnection.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/DBConnection.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/DoctorLogin.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/DoctorLogin.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Main.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/NurseView.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/NurseView.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"importingSettings\">\r\n      <MavenImportingSettings>\r\n        <option name=\"workspaceImportEnabled\" value=\"true\" />\r\n      </MavenImportingSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2aOP2FJUZehaCl9LPToIwtqLArI\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"CS202Projesi\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Registration\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Registration\" />\r\n      <module name=\"CS202Projesi\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"benimDeneme\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"benimDeneme\" />\r\n      <module name=\"CS202Projesi\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"testPatient.testPatientSignUp\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"CS202Projesi\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"testPatient\" />\r\n      <option name=\"METHOD_NAME\" value=\"testPatientSignUp\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.benimDeneme\" />\r\n        <item itemvalue=\"Application.Registration\" />\r\n        <item itemvalue=\"JUnit.testPatient.testPatientSignUp\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"8233834e-6a4b-4ef6-b8f5-50d730d6836b\" name=\"Changes\" comment=\"\" />\r\n      <created>1704186445741</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1704186445741</updated>\r\n      <workItem from=\"1704186447312\" duration=\"319000\" />\r\n      <workItem from=\"1704297556459\" duration=\"6372000\" />\r\n      <workItem from=\"1704394040054\" duration=\"2668000\" />\r\n      <workItem from=\"1704445833827\" duration=\"6794000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"deneme\">\r\n      <created>1704186521929</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1704186521929</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Emin frame ve panel'lerle ilgili bazı denemelerde bulunuyor.&#10;İpek de izliyor.\">\r\n      <created>1704187849575</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1704187849575</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Valla yaptık bir şeyler.&#10;Buraya yazasım gelmiyor açık açık :/\">\r\n      <created>1704310895073</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1704310895073</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Son zımbırıkları da ekledim\">\r\n      <created>1704448971560</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1704448971560</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"deneme\" />\r\n    <MESSAGE value=\"Emin frame ve panel'lerle ilgili bazı denemelerde bulunuyor.&#10;İpek de izliyor.\" />\r\n    <MESSAGE value=\"Valla yaptık bir şeyler.&#10;Buraya yazasım gelmiyor açık açık :/\" />\r\n    <MESSAGE value=\"Son zımbırıkları da ekledim\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Son zımbırıkları da ekledim\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision f19fa7ba2b13627355d48f0beba71294a1c13848)
++++ b/.idea/workspace.xml	(date 1704548388538)
+@@ -4,13 +4,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="Son zımbırıkları da ekledim">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/AdminView.java" afterDir="false" />
++    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="DoctorLogin kısmına ekleme yaptım">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/DoctorLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DoctorLogin.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/NurseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NurseView.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -118,6 +114,7 @@
+       <workItem from="1704297556459" duration="6372000" />
+       <workItem from="1704394040054" duration="2668000" />
+       <workItem from="1704445833827" duration="6794000" />
++      <workItem from="1704548279496" duration="109000" />
+     </task>
+     <task id="LOCAL-00001" summary="deneme">
+       <created>1704186521929</created>
+@@ -147,7 +144,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1704448971560</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="DoctorLogin kısmına ekleme yaptım">
++      <created>1704543603298</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1704543603298</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -158,6 +162,7 @@
+     <MESSAGE value="Emin frame ve panel'lerle ilgili bazı denemelerde bulunuyor.&#10;İpek de izliyor." />
+     <MESSAGE value="Valla yaptık bir şeyler.&#10;Buraya yazasım gelmiyor açık açık :/" />
+     <MESSAGE value="Son zımbırıkları da ekledim" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Son zımbırıkları da ekledim" />
++    <MESSAGE value="DoctorLogin kısmına ekleme yaptım" />
++    <option name="LAST_COMMIT_MESSAGE" value="DoctorLogin kısmına ekleme yaptım" />
+   </component>
+ </project>
+\ No newline at end of file
