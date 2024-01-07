@@ -7,8 +7,9 @@ import java.awt.event.ActionListener;
  * Kullanıcılar yeni hesap açabiliyor olmalı ve görebildikleri belli bilgiler var.
  */
 public class PatientView {
-
-    public PatientView(){
+    int patientId;
+    public PatientView(int patientId) {
+        this.patientId = patientId;
         JFrame frame = new JFrame("Hasta Ekranına Hoşgeldiniz");
 
         JPanel panel = new JPanel();

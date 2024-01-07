@@ -12,7 +12,7 @@ public class WelcomingWindow {
         JButton patientButton = new JButton("Hastayım sana");
 
         patientButton.addActionListener(e -> {
-            PatientView patientView = new PatientView();
+            PatientLogin patientLogin = new PatientLogin();
         });
 
         JButton doctorButton = new JButton("El çek ilacımdan tabib");
