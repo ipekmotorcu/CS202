@@ -21,7 +21,7 @@ public class WelcomingWindow {
             DoctorLogin doctorLogin = new DoctorLogin();
         });
 
-        JButton nurseButton = new JButton("El ver bacım");
+        JButton nurseButton = new JButton("Nurse");
 
         nurseButton.addActionListener(e -> {
             NurseLogin nurseLogin = new NurseLogin();

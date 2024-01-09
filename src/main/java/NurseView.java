@@ -11,7 +11,7 @@ public class NurseView {
     public NurseView(int nurseId){
         this.nurseId = nurseId;
 
-        JFrame frame = new JFrame("Hemşire Ekranına Hoşgeldiniz");
+        JFrame frame = new JFrame("Nurse View");
 
         JPanel panel = new JPanel();
         JPanel panel2 = new JPanel();
@@ -21,8 +21,8 @@ public class NurseView {
         //JTextField idTxt = new JTextField(15);
 
 
-
-        JLabel pass = new JLabel("Belli bir tarih aralığını görmek istiyorsanız giriniz: (\"10-09-1938\" formatında girmezseniz çalışmam)");
+//Bu kısıma gerek var mı not almamışız
+       /* JLabel pass = new JLabel("Belli bir tarih aralığını görmek istiyorsanız giriniz: (\"10-09-1938\" formatında girmezseniz çalışmam)");
         JTextField startDate = new JTextField(10);
         startDate.setText("başlangıç");
         JTextField endDate = new JTextField(10);
@@ -30,9 +30,12 @@ public class NurseView {
         panel2.add(pass);
 
         panel3.add(startDate); panel3.add(endDate);
-
-        JButton showApps = new JButton("Randevularımı Göster");
+*/
+        JButton showApps = new JButton("View Room Availability");
         panel.add(showApps);
+
+        JButton viewUpcoming = new JButton("View Upcoming Rooms");
+        panel.add(viewUpcoming);
 
         showApps.addActionListener(new ActionListener() {
             @Override
@@ -46,14 +49,26 @@ public class NurseView {
             }
         });
 
-        JButton tarihTamam = new JButton("Tamam");
+        viewUpcoming.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //PatientView.showPastApps();
+                try {
+                    viewUpcomingRooms();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
+        /*JButton tarihTamam = new JButton("Tamam");
         panel3.add(tarihTamam);
         tarihTamam.addActionListener(e -> { //oha java'da lambda notasyonu var lan
             PatientView.checkDateFormat(startDate.getText());
             PatientView.checkDateFormat(endDate.getText());
             System.out.println(startDate.getText());
             System.out.println(endDate.getText()); //falan işte, şu an bilmiyorum
-        });
+        });*/
 
 
         //panel.setLayout(new GridLayout());
@@ -62,8 +77,9 @@ public class NurseView {
 
 
         frame.add(panel2);
+        frame.add(panel);//butonlar bu panelde
         frame.add(panel3);
-        frame.add(panel);
+
 
 
         frame.setLayout(new GridLayout(3,1));
@@ -82,14 +98,51 @@ public class NurseView {
 
 
         Statement stmt = DBConnection.getConnection().createStatement();
-        ResultSet rs = stmt.executeQuery("select * from for_nurse");
+        ResultSet rs = stmt.executeQuery("select * from Occupied");
 
-        String view = "date                 starting hour            finishing hour\n";
+        String view = "room no    date                 starting hour            finishing hour\n";
         while(rs.next()){
+            view += rs.getString(4)+"              ";
             view += rs.getString(1);
-            view += "    "+rs.getString(2);
-            view += "                    "+rs.getString(3)+ "\n";
+            view += "      "+rs.getString(2);
+            view += "                  "+rs.getString(3)+ "\n";
             //view += "    "+rs.getString(4) + "\n";
+        }
+        text.setText(view);
+
+        frame.add(text);
+        //frame.add(label,BorderLayout.NORTH);
+        //frame.add(text, BorderLayout.SOUTH);
+
+        //frame.setLayout(new GridLayout(2,1));
+        frame.setSize(700,500);
+        frame.setVisible(true);
+
+
+
+    }
+
+    /**
+     * Şu anda zamanına bakmadan o hemşireye atanan bütün odaları gösteriyor
+     * Ekrana tarihi de yazdırabiliriz ama gerekli mi bilemedim
+     *
+     */
+    public void viewUpcomingRooms() throws SQLException {
+        JFrame frame = new JFrame("Upcoming Rooms");
+        JLabel label = new JLabel("");
+
+
+        JTextArea text = new JTextArea();
+
+
+        Statement stmt = DBConnection.getConnection().createStatement();
+        ResultSet rs = stmt.executeQuery("    select a.room_id ,r.room_type from assigns_room a natural join room r where nurse_id = "+ this.nurseId);
+
+        String view = "Room No    Room Type\n";
+        while(rs.next()){
+            view += rs.getString(1)+"                  ";
+            view += rs.getString(2)+ "\n";
+
         }
         text.setText(view);
 
