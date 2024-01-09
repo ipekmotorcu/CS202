@@ -99,9 +99,6 @@ public class PatientSignUp {
         });
         c.add(enter);
 
-
-
-
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(700,400));
         frame.setVisible(true);

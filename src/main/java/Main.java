@@ -3,19 +3,17 @@ import javax.swing.plaf.basic.BasicOptionPaneUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.PathIterator;
-import java.sql.SQLException;
-import java.util.EventListener;
+
 
 public class Main {
     public static void main(String[] args) throws Exception {
         //PatientSignUp signUp = new PatientSignUp();
 
-        //PatientView patientView = new PatientView();
+        PatientView patientView = new PatientView(301);
 
-        WelcomingWindow welcomingWindow = new WelcomingWindow();
+        //WelcomingWindow welcomingWindow = new WelcomingWindow();
 
-        //NurseView nurseView = new NurseView();
+        //NurseView nurseView = new NurseView(201);
 
         //NurseView.viewRoomAvailability();
 
@@ -24,7 +22,7 @@ public class Main {
 
         //PatientLogin  lg = new PatientLogin();
 
-
+        //AdminView admin = new AdminView(401);
     }
 
     public static void denemeler(){

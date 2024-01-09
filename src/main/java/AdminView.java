@@ -24,8 +24,11 @@ public class AdminView {
 
         add.addActionListener(e -> {
             addMedicalStaff();
+            frame.dispose(); //bu satır yetiyor önceki pencereyi kapatmak için :p
 
         });
+
+
 
 
 

@@ -7,6 +7,11 @@
     <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="Nurse ile ilgili değişiklikler yapıldı. Not: Çok iyi olmadı galiba ama gerekirse bir daha bakarız">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DoctorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DoctorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PatientSignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientSignUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PatientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

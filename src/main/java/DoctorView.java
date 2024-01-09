@@ -34,12 +34,7 @@ public class DoctorView {
         JButton showApps = new JButton("Randevularımı Göster");
         panel.add(showApps);
 
-        showApps.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PatientView.showPastApps();
-            }
-        });
+        showApps.addActionListener(e -> PatientView.showPastApps());
 
         JButton tarihTamam = new JButton("Tamam");
         panel3.add(tarihTamam);
