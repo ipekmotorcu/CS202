@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="PatientSignUp ı oluşturdum ama bunu giriş ekranına nasıl bağlarız emin değilim">
+    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="İpek zaten comment atmıştır.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatientSignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientSignUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PatientLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientLogin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704643478392</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="İpek zaten comment atmıştır.">
+      <created>1704653584270</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1704653584270</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,6 +207,7 @@
     <MESSAGE value="AdminLogin eklendi" />
     <MESSAGE value="şifreler artık güvende" />
     <MESSAGE value="PatientSignUp ı oluşturdum ama bunu giriş ekranına nasıl bağlarız emin değilim" />
-    <option name="LAST_COMMIT_MESSAGE" value="PatientSignUp ı oluşturdum ama bunu giriş ekranına nasıl bağlarız emin değilim" />
+    <MESSAGE value="İpek zaten comment atmıştır." />
+    <option name="LAST_COMMIT_MESSAGE" value="İpek zaten comment atmıştır." />
   </component>
 </project>

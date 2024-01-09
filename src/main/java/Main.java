@@ -9,11 +9,11 @@ import java.util.EventListener;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        PatientSignUp signUp = new PatientSignUp();
+        //PatientSignUp signUp = new PatientSignUp();
 
         //PatientView patientView = new PatientView();
 
-        //WelcomingWindow welcomingWindow = new WelcomingWindow();
+        WelcomingWindow welcomingWindow = new WelcomingWindow();
 
         //NurseView nurseView = new NurseView();
 
@@ -22,6 +22,7 @@ public class Main {
         //DoctorView.declareUnavailability("2024-05-15", "11:00:00", "13:00:00", 911);
         //System.out.println(Cryptography.encrypt("pass123",Cryptography.generateSecretKey()));
 
+        //PatientLogin  lg = new PatientLogin();
 
 
     }
