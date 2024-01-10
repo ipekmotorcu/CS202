@@ -10,13 +10,13 @@ public class Main {
     public static void main(String[] args) throws Exception {
         //PatientSignUp signUp = new PatientSignUp();
 
-        //PatientView patientView = new PatientView(302);
+        PatientView patientView = new PatientView(302);
 
         //WelcomingWindow welcomingWindow = new WelcomingWindow();
 
         //NurseView nurseView = new NurseView(201);
 
-        DoctorView doctorView=new DoctorView(101);
+        //DoctorView doctorView=new DoctorView(101);
         //NurseView.viewRoomAvailability();
 
         //DoctorView.declareUnavailability("2024-05-15", "11:00:00", "13:00:00", 911);
@@ -24,7 +24,7 @@ public class Main {
 
         //PatientLogin  lg = new PatientLogin();
         //DoctorView d = new DoctorView(102);
-        AdminView admin = new AdminView(401);
+        //AdminView admin = new AdminView(401);
 
         String n = "a";
         switch (n){

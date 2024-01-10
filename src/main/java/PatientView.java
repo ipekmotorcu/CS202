@@ -96,6 +96,9 @@ public class PatientView {
         frame.setVisible(true);
     }
 
+    /**
+     * bunu daha yazmadım. beraber şaaparız.
+     */
     private void newAppointmentFrame() {
         JFrame popup = new JFrame("New Appointment");
 

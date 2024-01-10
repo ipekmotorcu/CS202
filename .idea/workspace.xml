@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="doktor ekranına view room availability ekledim layout kısmına hepsini ekleyince bakarız diye düşündüm">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DoctorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DoctorView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NurseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/NurseView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientView.java" afterDir="false" />
-    </list>
+    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="hastalar doktorun departmanına göre randevu filtreleyebiliyor." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704888300392</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="hastalar doktorun departmanına göre randevu filtreleyebiliyor.">
+      <created>1704897564115</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1704897564115</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,6 +232,7 @@
     <MESSAGE value="PatientSignUp ı oluşturdum ama bunu giriş ekranına nasıl bağlarız emin değilim" />
     <MESSAGE value="Nurse ile ilgili değişiklikler yapıldı. Not: Çok iyi olmadı galiba ama gerekirse bir daha bakarız" />
     <MESSAGE value="doktor ekranına view room availability ekledim layout kısmına hepsini ekleyince bakarız diye düşündüm" />
-    <option name="LAST_COMMIT_MESSAGE" value="doktor ekranına view room availability ekledim layout kısmına hepsini ekleyince bakarız diye düşündüm" />
+    <MESSAGE value="hastalar doktorun departmanına göre randevu filtreleyebiliyor." />
+    <option name="LAST_COMMIT_MESSAGE" value="hastalar doktorun departmanına göre randevu filtreleyebiliyor." />
   </component>
 </project>
