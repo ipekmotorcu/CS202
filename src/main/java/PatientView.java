@@ -23,7 +23,7 @@ public class PatientView {
 
 
 
-        JLabel pass = new JLabel("Belli bir tarih aralığını görmek istiyorsanız giriniz: (\"10-09-1938\" formatında girmezseniz çalışmam)");
+        JLabel pass = new JLabel("Belli bir tarih aralığını görmek istiyorsanız giriniz: (\"1938-10-09\" formatında girmezseniz çalışmam)");
         JTextField startDate = new JTextField(10);
         startDate.setText("başlangıç");
         JTextField endDate = new JTextField(10);
@@ -39,7 +39,6 @@ public class PatientView {
         panel.add(showApps);
 
         showApps.addActionListener(e -> showAppsPatient(patientId, start.get(), end.get()));
-
 
 
         JButton tarihTamam = new JButton("Tamam");
@@ -126,10 +125,10 @@ public class PatientView {
     }
 
     private static void showAppsPatient(int patientId, String start, String end){
-        JFrame popup = new JFrame("Geçmiş randevularınız");
+        JFrame popup = new JFrame("Your Appointments");
         JTextArea textArea = new JTextArea();
 
-        String apps = "Patient Name       App Date        Starting Hour     Appointment Status     Appointment ID     Doctor Name\n";
+        String apps = "Patient Name       App Date        Starting Hour     Appointment Status     Appointment ID     Doctor Name\n\n";
         try {
             Statement stmt = DBConnection.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery("select p.patient_name, a.app_date, a.starting_hour, a.app_status,a.app_id, d.doctor_name " +
@@ -155,7 +154,6 @@ public class PatientView {
         textArea.setText(apps);
         popup.add(textArea);
         popup.setMinimumSize(new Dimension(800,100));
-        //popup.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); cık, bunu korsam bütün uygulamayı kapatıyor.
         popup.setVisible(true);
     }
 }
