@@ -16,7 +16,7 @@ public class Main {
 
         //NurseView nurseView = new NurseView(201);
 
-        //DoctorView doctorView=new DoctorView(101);
+        DoctorView doctorView=new DoctorView(101);
         //NurseView.viewRoomAvailability();
 
         //DoctorView.declareUnavailability("2024-05-15", "11:00:00", "13:00:00", 911);
