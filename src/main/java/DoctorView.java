@@ -130,6 +130,7 @@ public class DoctorView {
      * @param DoctorId
      */
     //Burada prepared statement kullanmamız gerekiyor sanırım
+
     public static void declareUnavailability(String date, String starting_hour, String finishing_hour, int DoctorId){
         try{
             Statement stmt = DBConnection.getConnection().createStatement();
