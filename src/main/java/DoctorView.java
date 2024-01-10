@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class DoctorView {
     int doctorId;
@@ -26,7 +27,7 @@ public class DoctorView {
 
 
 
-        JLabel pass = new JLabel("Belli bir tarih aralığını görmek istiyorsanız giriniz: (\"10-09-1938\" formatında girmezseniz çalışmam)");
+        JLabel pass = new JLabel("Belli bir tarih aralığını görmek istiyorsanız giriniz: (\"1938-10-09\" formatında girmezseniz çalışmam)");
         JTextField startDate = new JTextField(10);
         startDate.setText("başlangıç");
         JTextField endDate = new JTextField(10);
@@ -38,15 +39,18 @@ public class DoctorView {
         JButton showApps = new JButton("Randevularımı Göster");
         panel.add(showApps);
 
-        showApps.addActionListener(e -> PatientView.showPastApps());
+        AtomicReference<String> start = new AtomicReference<>("1000-10-10");
+        AtomicReference<String> end = new AtomicReference<>("3000-10-10");
+
+        showApps.addActionListener(e -> showAppsDoctor(doctorId, start.get(), end.get())); //buradaki "get"lerin tam nasıl çalıştığını anladığımı söyleyemem
 
         JButton tarihTamam = new JButton("Tamam");
         panel3.add(tarihTamam);
         tarihTamam.addActionListener(e -> { //oha java'da lambda notasyonu var lan
             PatientView.checkDateFormat(startDate.getText());
             PatientView.checkDateFormat(endDate.getText());
-            System.out.println(startDate.getText());
-            System.out.println(endDate.getText()); //falan işte, şu an bilmiyorum
+            start.set(startDate.getText());
+            end.set(endDate.getText());
         });
 
 
@@ -81,6 +85,40 @@ public class DoctorView {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(700,400));
         frame.setVisible(true);
+    }
+
+    private static void showAppsDoctor(int doctorId, String start, String end) {
+        JFrame popup = new JFrame("Your Appointments");
+        JTextArea textArea = new JTextArea();
+
+        String apps ="Appointment Date      Patient Name       Starting Hour          Appointment Status\n\n";
+
+        try{
+            Statement stmt = DBConnection.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery("select a.app_date, p.patient_name, a.starting_hour, a.app_status\n" +
+                    "from doctor d, appointment a, patient p\n" +
+                    "where d.doctor_id = a.doctor_id and p.patient_id = a.patient_id and d.doctor_id = "+doctorId+" and " +
+                    "a.app_date > \""+start+"\" and a.app_date < \""+end+"\" ;");
+            if(!rs.isBeforeFirst()){
+                apps = "You have no assigned appointments";
+            }
+            while(rs.next()){
+                apps += rs.getString(1) + "               ";
+                apps += rs.getString(2) + "             ";
+                apps += rs.getString(3) + "                  ";
+                apps += rs.getString(4)+"\n";
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        textArea.setText(apps);
+        popup.add(textArea);
+        popup.setMinimumSize(new Dimension(700,250));
+        popup.setVisible(true);
     }
 
     /**

@@ -3,6 +3,7 @@ import javax.swing.plaf.basic.BasicOptionPaneUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Statement;
 
 
 public class Main {
@@ -22,8 +23,14 @@ public class Main {
         //System.out.println(Cryptography.encrypt("pass123",Cryptography.generateSecretKey()));
 
         //PatientLogin  lg = new PatientLogin();
-
+        //DoctorView d = new DoctorView(102);
         //AdminView admin = new AdminView(401);
+
+
+        Statement stmt =  DBConnection.getConnection().createStatement();
+        stmt.executeUpdate("update Appointment\n " +
+                "set app_status = \"Scheduled\"\n " +
+                "where app_id = "+ 501 +" ;");
     }
 
     public static void denemeler(){
