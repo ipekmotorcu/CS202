@@ -9,12 +9,13 @@ public class Main {
     public static void main(String[] args) throws Exception {
         //PatientSignUp signUp = new PatientSignUp();
 
-        PatientView patientView = new PatientView(301);
+        //PatientView patientView = new PatientView(301);
 
         //WelcomingWindow welcomingWindow = new WelcomingWindow();
 
         //NurseView nurseView = new NurseView(201);
 
+        DoctorView doctorView=new DoctorView(101);
         //NurseView.viewRoomAvailability();
 
         //DoctorView.declareUnavailability("2024-05-15", "11:00:00", "13:00:00", 911);
