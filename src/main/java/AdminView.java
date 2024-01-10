@@ -29,19 +29,9 @@ public class AdminView {
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(700,400));
+        frame.setMinimumSize(new Dimension(800,400));
+        frame.setLocation(300,100);
         frame.setVisible(true);
     }
     Connection connection = DBConnection.getConnection();

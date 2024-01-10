@@ -83,7 +83,8 @@ public class DoctorView {
 
         frame.setLayout(new GridLayout(3,1));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(700,400));
+        frame.setMinimumSize(new Dimension(800,400));
+        frame.setLocation(300,100);
         frame.setVisible(true);
     }
 

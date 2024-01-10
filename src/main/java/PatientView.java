@@ -18,31 +18,37 @@ public class PatientView {
         JPanel panel = new JPanel();
         JPanel panel2 = new JPanel();
         JPanel panel3 = new JPanel();
+        JPanel panel4 = new JPanel();
 
         //JLabel id = new JLabel("TC Kimlik No");
         //JTextField idTxt = new JTextField(15);
 
 
 
-        JLabel pass = new JLabel("Belli bir tarih aralığını görmek istiyorsanız giriniz: (\"1938-10-09\" formatında girmezseniz çalışmam)");
+        JLabel pass = new JLabel("If you want to search for a certain date range and department enter: (\"1938-10-09\" is the format you must follow)");
         JTextField startDate = new JTextField(10);
-        startDate.setText("başlangıç");
+        startDate.setText("starting date");
         JTextField endDate = new JTextField(10);
-        endDate.setText("bitiş");
+        endDate.setText("ending date");
         panel2.add(pass);
 
         panel3.add(startDate); panel3.add(endDate);
 
         AtomicReference<String> start = new AtomicReference<>("1000-10-10");
         AtomicReference<String> end = new AtomicReference<>("3000-10-10");
+        AtomicReference<String> department = new AtomicReference<>("");
 
-        JButton showApps = new JButton("Randevularımı Göster");
-        panel.add(showApps);
+        JButton showApps = new JButton("Show Appointments");
+        panel4.add(showApps);
 
-        showApps.addActionListener(e -> showAppsPatient(patientId, start.get(), end.get()));
+        showApps.addActionListener(e -> showAppsPatient(patientId, start.get(), end.get(), department.get()));
 
+        String[] optionsDep = {"Select Department", "Cardiology", "Neurology","Orthopedics"};
+        JComboBox<String>  depComboBox= new JComboBox<>(optionsDep);
 
-        JButton tarihTamam = new JButton("Tamam");
+        panel3.add(depComboBox);
+
+        JButton tarihTamam = new JButton("Apply");
         panel3.add(tarihTamam);
 
 
@@ -51,15 +57,16 @@ public class PatientView {
             checkDateFormat(endDate.getText());
             start.set(startDate.getText());
             end.set(endDate.getText());
+            department.set((String)depComboBox.getSelectedItem());
 
             System.out.println(startDate.getText());
             System.out.println(endDate.getText()); //falan işte, şu an bilmiyorum
+            System.out.println(department.get());
         });
 
 
-        //panel.setLayout(new GridLayout());
+
         panel2.setLayout(new GridLayout());
-        //panel2.setLayout(new BoxLayout(panel2, BoxLayout.LINE_AXIS)); Olacak şey değil yahu
 
         JButton cancelApp = new JButton("Cancel Appointment");
         cancelApp.addActionListener(e -> {
@@ -67,20 +74,37 @@ public class PatientView {
         });
         panel.add(cancelApp);
 
+
+        JButton makeApp = new JButton("Book Appointment");
+        makeApp.addActionListener(e -> {
+            newAppointmentFrame();
+        });
+
+        panel.add(makeApp);
+
+
         frame.add(panel2);
         frame.add(panel3);
         frame.add(panel);
+        frame.add(panel4);
 
 
-        frame.setLayout(new GridLayout(3,1));
+        frame.setLayout(new GridLayout(4,1));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(700,400));
+        frame.setMinimumSize(new Dimension(800,400));
+        frame.setLocation(300,100);
         frame.setVisible(true);
+    }
+
+    private void newAppointmentFrame() {
+        JFrame popup = new JFrame("New Appointment");
+
+        popup.setVisible(true);
     }
 
     private void appCancelFrame(int patientId) {
         JFrame popup = new JFrame("Cancel Appointment");
-        popup.setBounds(300,100,700,300);
+        popup.setBounds(300,100,550,300);
         popup.setLayout(null);
 
         //String[] appsString = {"2000-10-11","2200-10-11","2300-10-11" };
@@ -111,7 +135,7 @@ public class PatientView {
 
 
         JComboBox<String> apps = new JComboBox<>(appsString);
-        apps.setSize(500,40);
+        apps.setSize(450,40);
         apps.setLocation(50,50);
 
         /*String forId = (String)apps.getSelectedItem();
@@ -192,36 +216,33 @@ public class PatientView {
 
     }
 
-    /**
-     * şimdilik anlamsız bir "popup" çıkarmaktan ibaret yaptığı.
-     */
-    protected static void showPastApps() {
-        JFrame popup = new JFrame("Geçmiş randevularınız");
-        JLabel label = new JLabel();
 
-        String apps = "LOREM IPSUM DOLOR SIT AMET";
-        //apps = getApps(); falan gibi bir metot işte
-
-
-
-
-        label.setText(apps);
-        popup.add(label);
-        popup.setMinimumSize(new Dimension(250,100));
-        //popup.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); cık, bunu korsam bütün uygulamayı kapatıyor.
-        popup.setVisible(true);
-    }
-
-    private static void showAppsPatient(int patientId, String start, String end){
+    private static void showAppsPatient(int patientId, String start, String end, String department){
         JFrame popup = new JFrame("Your Appointments");
         JTextArea textArea = new JTextArea();
-
+        String sqlFiller = "";
+        if(!department.equals("")){
+            switch(department){
+                case"Cardiology":
+                    sqlFiller = " d.dep_id=1 and ";
+                    break;
+                case"Neurology":
+                    sqlFiller = " d.dep_id=2 and ";
+                    break;
+                case "Orthopedics":
+                    sqlFiller = " d.dep_id=3 and ";
+                    break;
+                default:
+                    sqlFiller = " ";
+            }
+        }
         String apps = "Patient Name       App Date        Starting Hour     Appointment Status     Appointment ID     Doctor Name\n\n";
         try {
             Statement stmt = DBConnection.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery("select p.patient_name, a.app_date, a.starting_hour, a.app_status,a.app_id, d.doctor_name " +
                     "from patient p, Appointment a, doctor d " +
                     "where p.patient_id = a.patient_id and p.patient_id = "+patientId+" and d.doctor_id = a.doctor_id and a.app_status = \"Scheduled\" and " +
+                    sqlFiller +
                     "a.app_date > \""+start+"\" and a.app_date < \""+end+"\" ;");
             if(!rs.isBeforeFirst()){
                 apps = "You have no registered appointments";
@@ -233,7 +254,7 @@ public class PatientView {
                 apps += rs.getString(3) + "             ";
                 apps += rs.getString(4) + "                   ";
                 apps += rs.getString(5) + "                       ";
-                apps += rs.getString(6);
+                apps += rs.getString(6) + "\n";
             }
         }
         catch(SQLException e){

@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         //PatientSignUp signUp = new PatientSignUp();
 
-        PatientView patientView = new PatientView(302);
+        //PatientView patientView = new PatientView(302);
 
         //WelcomingWindow welcomingWindow = new WelcomingWindow();
 
@@ -24,13 +24,21 @@ public class Main {
 
         //PatientLogin  lg = new PatientLogin();
         //DoctorView d = new DoctorView(102);
-        //AdminView admin = new AdminView(401);
+        AdminView admin = new AdminView(401);
 
+        String n = "a";
+        switch (n){
+            case "b":
+                System.out.println("b");
+                break;
+            case "a":
+                System.out.println("doğru");
+                break;
+            case "c":
+                System.out.println("değil");
+                break;
+        }
 
-        Statement stmt =  DBConnection.getConnection().createStatement();
-        stmt.executeUpdate("update Appointment\n " +
-                "set app_status = \"Scheduled\"\n " +
-                "where app_id = "+ 501 +" ;");
     }
 
     public static void denemeler(){
@@ -59,10 +67,7 @@ public class Main {
         panel.add(textField2);
 
 
-
         frame.add(panel);
-
-
 
 
         frame.setMinimumSize(new Dimension(400,400));
