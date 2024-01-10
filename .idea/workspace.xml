@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="showAppsPatient yazıldı ki patient ekranındaki tarihlerin bir anlamı olsun.&#10;Sonuçta çok çirkin görünüyo ama ossun">
+    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="DoctorView'da tarih ayarlama şeysi artık çalışıyor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DoctorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DoctorView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/PatientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientView.java" afterDir="false" />
     </list>
@@ -98,8 +97,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.benimDeneme" />
         <item itemvalue="Application.Registration" />
+        <item itemvalue="Application.benimDeneme" />
         <item itemvalue="JUnit.testPatient.testPatientSignUp" />
       </list>
     </recent_temporary>
@@ -117,7 +116,7 @@
       <workItem from="1704394040054" duration="2668000" />
       <workItem from="1704445833827" duration="6794000" />
       <workItem from="1704646400326" duration="2338000" />
-      <workItem from="1704879982794" duration="2162000" />
+      <workItem from="1704879982794" duration="7452000" />
     </task>
     <task id="LOCAL-00001" summary="deneme">
       <created>1704186521929</created>
@@ -189,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704833728837</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="DoctorView'da tarih ayarlama şeysi artık çalışıyor">
+      <created>1704882663183</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1704882663183</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +223,7 @@
     <MESSAGE value="PatientSignUp ı oluşturdum ama bunu giriş ekranına nasıl bağlarız emin değilim" />
     <MESSAGE value="Nurse ile ilgili değişiklikler yapıldı. Not: Çok iyi olmadı galiba ama gerekirse bir daha bakarız" />
     <MESSAGE value="showAppsPatient yazıldı ki patient ekranındaki tarihlerin bir anlamı olsun.&#10;Sonuçta çok çirkin görünüyo ama ossun" />
-    <option name="LAST_COMMIT_MESSAGE" value="showAppsPatient yazıldı ki patient ekranındaki tarihlerin bir anlamı olsun.&#10;Sonuçta çok çirkin görünüyo ama ossun" />
+    <MESSAGE value="DoctorView'da tarih ayarlama şeysi artık çalışıyor" />
+    <option name="LAST_COMMIT_MESSAGE" value="DoctorView'da tarih ayarlama şeysi artık çalışıyor" />
   </component>
 </project>

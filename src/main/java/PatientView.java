@@ -60,6 +60,11 @@ public class PatientView {
         panel2.setLayout(new GridLayout());
         //panel2.setLayout(new BoxLayout(panel2, BoxLayout.LINE_AXIS)); Olacak şey değil yahu
 
+        JButton cancelApp = new JButton("Cancel Appointment");
+        cancelApp.addActionListener(e -> {
+            appCancelFrame(patientId);
+        });
+        panel.add(cancelApp);
 
         frame.add(panel2);
         frame.add(panel3);
@@ -70,6 +75,82 @@ public class PatientView {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(700,400));
         frame.setVisible(true);
+    }
+
+    private void appCancelFrame(int patientId) {
+        JFrame popup = new JFrame("Cancel Appointment");
+        popup.setBounds(300,100,700,300);
+        popup.setLayout(null);
+
+        //String[] appsString = {"2000-10-11","2200-10-11","2300-10-11" };
+        String[] appsString = new String[10];
+
+        int appId = -1;
+
+        try{
+            Statement stmt = DBConnection.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery("select a.app_date, a.starting_hour, d.doctor_name, a.app_status, a.app_id \n" +
+                    "from patient p, Appointment a, doctor d \n" +
+                    "where p.patient_id = a.patient_id and d.doctor_id = a.doctor_id and " +
+                    "p.patient_id = "+patientId+" ;");
+
+            for(int i=0; rs.next();i++){
+                String addendum = "";
+                addendum += rs.getString(1) + "      ";
+                addendum += rs.getString(2) + "       ";
+                addendum += rs.getString(3) + "       ";
+                addendum += rs.getString(4) + "       ";
+                addendum += rs.getString(5);
+                appsString[i] = addendum;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        JComboBox<String> apps = new JComboBox<>(appsString);
+        apps.setSize(500,40);
+        apps.setLocation(50,50);
+
+        String forId = (String)apps.getSelectedItem();
+        appId = Integer.parseInt(forId.substring(forId.length()-3)); //iptal edilecek randevunun id'si
+
+
+        JButton cancel = new JButton("Cancel Appointment");
+        cancel.setSize(150,20);
+        cancel.setLocation(75,200);
+        int finalAppId = appId;
+        cancel.addActionListener(e ->{
+            try{
+                Statement stmt =  DBConnection.getConnection().createStatement();
+                stmt.executeUpdate("update Appointment\n " +
+                        "set app_status = \"Canceled\"\n " +
+                        "where app_id = "+ finalAppId +" ;");
+
+                JFrame ok = new JFrame("Congratulations");
+                JLabel message = new JLabel("Your appointment was successfully canceled");
+                ok.add(message);
+                ok.setBounds(350,250,300,150);
+                ok.setVisible(true);
+
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        JButton returner = new JButton("Return");
+        returner.setSize(150,20);
+        returner.setLocation(300,200);
+        returner.addActionListener(e -> popup.dispose());
+
+
+        popup.add(apps);
+        popup.add(cancel);
+        popup.add(returner);
+
+        popup.setResizable(false);
+        popup.setVisible(true);
     }
 
     /**
@@ -133,7 +214,7 @@ public class PatientView {
             Statement stmt = DBConnection.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery("select p.patient_name, a.app_date, a.starting_hour, a.app_status,a.app_id, d.doctor_name " +
                     "from patient p, Appointment a, doctor d " +
-                    "where p.patient_id = a.patient_id and p.patient_id = "+patientId+" and d.doctor_id = a.doctor_id and " +
+                    "where p.patient_id = a.patient_id and p.patient_id = "+patientId+" and d.doctor_id = a.doctor_id and a.app_status = \"Scheduled\" and " +
                     "a.app_date > \""+start+"\" and a.app_date < \""+end+"\" ;");
             if(!rs.isBeforeFirst()){
                 apps = "You have no registered appointments";
