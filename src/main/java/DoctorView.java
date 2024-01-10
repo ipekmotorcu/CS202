@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.plaf.nimbus.State;
-import javax.xml.transform.Result;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,6 +69,18 @@ public class DoctorView {
                 }
             }
         });
+        JButton availability = new JButton("Declare Unavailability");
+        panel4.add(availability);
+        availability.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                declareUnavailability(doctorId);
+
+
+
+            }
+        });
 
 
 
@@ -129,15 +139,87 @@ public class DoctorView {
      * @param finishing_hour
      * @param DoctorId
      */
-    //Burada prepared statement kullanmamız gerekiyor sanırım
 
-    public static void declareUnavailability(String date, String starting_hour, String finishing_hour, int DoctorId){
-        try{
-            Statement stmt = DBConnection.getConnection().createStatement();
-            stmt.executeUpdate("insert into Unavailability values ('"+date+"', '"+starting_hour+"', '"+finishing_hour+"', "+DoctorId+")");}
-        catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
+    static Connection connection = DBConnection.getConnection();
+    public static boolean declareUnavailability(int doctorId){
+
+
+        JFrame frame1 = new JFrame("Declare Unavailability");
+        frame1.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame1.setBounds(400,100,400,250);
+        //frame.setSize(new Dimension(600,400));
+        frame1.setResizable(false);
+        frame1.setLayout(null);
+        Container c = frame1.getContentPane();
+
+        JLabel date1 = new JLabel("date");
+        date1.setSize(300, 30);
+        date1.setLocation(150, 10);
+        c.add(date1);
+
+        JTextField dateTxt = new JTextField(15); dateTxt.setText("");
+        dateTxt.setSize(250,30);
+        dateTxt.setLocation(270, 10);
+        c.add(dateTxt);
+
+
+        JLabel starting_hour = new JLabel("starting hour");
+        starting_hour.setSize(300, 30);
+        starting_hour.setLocation(150, 60);
+        c.add(starting_hour);
+
+        JTextField starting_hourTxt = new JTextField(15); starting_hourTxt.setText("");
+        starting_hourTxt.setSize(250,30);
+        starting_hourTxt.setLocation(270, 60);
+        c.add(starting_hourTxt);
+
+
+        JLabel finishing_hour = new JLabel("finishing hour");
+        finishing_hour.setSize(300, 30);
+        finishing_hour.setLocation(150, 110);
+        c.add(finishing_hour);
+
+        JTextField finishing_hourTxt = new JTextField(15); finishing_hourTxt.setText("");
+        finishing_hourTxt.setSize(250,30);
+        finishing_hourTxt.setLocation(270, 110);
+        c.add(finishing_hourTxt);
+
+        JButton enter = new JButton("Add");
+        enter.setSize(100,30);
+        enter.setLocation(270,210);
+        c.add(enter);
+        enter.addActionListener(e-> {
+            try {
+                int Id = doctorId;
+                String date = dateTxt.getText();
+                String startingHour =  starting_hourTxt.getText();
+                String finishingHour = finishing_hourTxt.getText();
+
+                PreparedStatement stmt = null;
+
+                    stmt = connection.prepareStatement("insert into Unavailability values ( ?,  ?  ,?,?)");
+                    stmt.setString(1, String.valueOf(date));
+                    stmt.setString(2, String.valueOf(startingHour));
+                    stmt.setString(3, String.valueOf(finishingHour));
+                    stmt.setString(4, String.valueOf(Id));
+                    stmt.executeUpdate();
+                    frame1.dispose();
+
+                } catch (SQLException e1) {
+
+                JFrame popup = new JFrame("Nope");
+                popup.add(new JLabel("Something went wrong: "+e1));
+                popup.setMinimumSize(new Dimension(1000, 150));
+                popup.setLocation(500, 200);
+                popup.setVisible(true);
+                }
+
+            });
+        frame1.setMinimumSize(new Dimension(700,400));
+        frame1.setVisible(true);
+
+        return true;
+
     }
 
     public static void viewRoomAvailability() throws SQLException {
