@@ -3,6 +3,7 @@ import java.awt.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -12,7 +13,7 @@ public class PatientView {
      int patientId;
     public PatientView(int patientId) {
         this.patientId = patientId;
-        JFrame frame = new JFrame("Hasta Ekranına Hoşgeldiniz");
+        JFrame frame = new JFrame("Patient View");
 
         JPanel panel = new JPanel();
         JPanel panel2 = new JPanel();
@@ -85,7 +86,7 @@ public class PatientView {
         //String[] appsString = {"2000-10-11","2200-10-11","2300-10-11" };
         String[] appsString = new String[10];
 
-        int appId = -1;
+        AtomicInteger appId = new AtomicInteger(-1);
 
         try{
             Statement stmt = DBConnection.getConnection().createStatement();
@@ -113,20 +114,26 @@ public class PatientView {
         apps.setSize(500,40);
         apps.setLocation(50,50);
 
-        String forId = (String)apps.getSelectedItem();
+        /*String forId = (String)apps.getSelectedItem();
         appId = Integer.parseInt(forId.substring(forId.length()-3)); //iptal edilecek randevunun id'si
-
+        System.out.println(appId);
+*/
 
         JButton cancel = new JButton("Cancel Appointment");
         cancel.setSize(150,20);
         cancel.setLocation(75,200);
-        int finalAppId = appId;
+        //int finalAppId = appId.get();
         cancel.addActionListener(e ->{
             try{
+                String forId = (String)apps.getSelectedItem();
+                appId.set(Integer.parseInt(forId.substring(forId.length() - 3))); //iptal edilecek randevunun id'si
+                System.out.println(appId.get());
+
+
                 Statement stmt =  DBConnection.getConnection().createStatement();
                 stmt.executeUpdate("update Appointment\n " +
                         "set app_status = \"Canceled\"\n " +
-                        "where app_id = "+ finalAppId +" ;");
+                        "where app_id = "+ appId +" ;");
 
                 JFrame ok = new JFrame("Congratulations");
                 JLabel message = new JLabel("Your appointment was successfully canceled");
