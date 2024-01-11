@@ -26,18 +26,7 @@ public class Main {
         //DoctorView d = new DoctorView(102);
         //AdminView admin = new AdminView(401);
 
-        String n = "a";
-        switch (n){
-            case "b":
-                System.out.println("b");
-                break;
-            case "a":
-                System.out.println("doğru");
-                break;
-            case "c":
-                System.out.println("değil");
-                break;
-        }
+
 
     }
 

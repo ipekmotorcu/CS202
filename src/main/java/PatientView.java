@@ -100,9 +100,82 @@ public class PatientView {
      * bunu daha yazmadım. beraber şaaparız.
      */
     private void newAppointmentFrame() {
-        JFrame popup = new JFrame("New Appointment");
+        JFrame frame1 = new JFrame("New Appointment");
+        frame1.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame1.setBounds(400,100,400,250);
+        //frame.setSize(new Dimension(600,400));
+        frame1.setResizable(false);
+        frame1.setLayout(null);
+        Container c = frame1.getContentPane();
 
-        popup.setVisible(true);
+        JLabel date1 = new JLabel("Date");
+        date1.setSize(300, 30);
+        date1.setLocation(150, 10);
+        c.add(date1);
+
+        JTextField dateTxt = new JTextField(15); dateTxt.setText("");
+        dateTxt.setSize(250,30);
+        dateTxt.setLocation(270, 10);
+        c.add(dateTxt);
+
+
+        JLabel starting_hour = new JLabel("Starting Hour");
+        starting_hour.setSize(300, 30);
+        starting_hour.setLocation(150, 60);
+        c.add(starting_hour);
+
+        JTextField starting_hourTxt = new JTextField(15); starting_hourTxt.setText("");
+        starting_hourTxt.setSize(250,30);
+        starting_hourTxt.setLocation(270, 60);
+        c.add(starting_hourTxt);
+
+
+        JLabel department = new JLabel("Doctor Department");
+        department.setSize(300, 30);
+        department.setLocation(150, 110);
+        c.add(department);
+
+        JTextField departmentTxt = new JTextField(15); departmentTxt.setText("");
+        departmentTxt.setSize(250,30);
+        departmentTxt.setLocation(270, 110);
+        c.add(departmentTxt);
+
+
+
+//shjdlfbnd
+
+//sldmfnaşdksf
+
+
+
+        JButton enter = new JButton("Enter");
+        enter.setSize(100,30);
+        enter.setLocation(270,210);
+        c.add(enter);
+        enter.addActionListener(e -> {
+            //BURAYA TARİHİ FALAN KONTROL EDEN ZIKKIMAT EKLENECEK
+            /*
+            JLabel doctors = new JLabel("Doctor Name");
+            doctors.setSize(300, 30);
+            doctors.setLocation(150, 160);
+            c.add(doctors);*/
+
+
+
+            //departmentTxt'ten departman ismini al
+            //sql'le oradaki doktorların isimlerini çekip "docNmaes"e ekle.
+            String[] docNames = {"Select a Doctor"};
+
+            JComboBox doctorsCombo = new JComboBox(docNames); //departmentTxt.setText("");
+            doctorsCombo.setSize(250,30);
+            doctorsCombo.setLocation(270, 160);
+            c.add(doctorsCombo);
+            System.out.println("lololo");
+            frame1.setVisible(true);
+        });
+
+        frame1.setMinimumSize(new Dimension(700,400));
+        frame1.setVisible(true);
     }
 
     private void appCancelFrame(int patientId) {

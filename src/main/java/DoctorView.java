@@ -34,7 +34,7 @@ public class DoctorView {
 
         panel3.add(startDate); panel3.add(endDate);
 
-        JButton showApps = new JButton("Randevularımı Göster");
+        JButton showApps = new JButton("Show Appointments");
         panel.add(showApps);
 
         AtomicReference<String> start = new AtomicReference<>("1000-10-10");
@@ -198,6 +198,7 @@ public class DoctorView {
 
                 PreparedStatement stmt = null;
 
+
                     stmt = connection.prepareStatement("insert into Unavailability values ( ?,  ?  ,?,?)");
                     stmt.setString(1, String.valueOf(date));
                     stmt.setString(2, String.valueOf(startingHour));
@@ -209,7 +210,7 @@ public class DoctorView {
                 } catch (SQLException e1) {
 
                 JFrame popup = new JFrame("Nope");
-                popup.add(new JLabel("Something went wrong: "+e1));
+                popup.add(new JLabel("You're writing something in an incorrect form: "));
                 popup.setMinimumSize(new Dimension(1000, 150));
                 popup.setLocation(500, 200);
                 popup.setVisible(true);
