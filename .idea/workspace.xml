@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="hastalar doktorun departmanına göre randevu filtreleyebiliyor.">
+    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="hatayı düzelttim galiba şu anda düzgün çalışıyor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DoctorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DoctorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdminView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DBConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,19 +24,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="5f855757-6097-4104-8bb5-c9f9cb54ede9" />
-        <option name="url" value="https://github.com/ipekmotorcu/CS202.git" />
-      </UrlAndAccount>
-    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -130,7 +117,7 @@
       <workItem from="1704394040054" duration="2668000" />
       <workItem from="1704445833827" duration="6794000" />
       <workItem from="1704646400326" duration="2338000" />
-      <workItem from="1704966986765" duration="3152000" />
+      <workItem from="1704893919791" duration="2560000" />
     </task>
     <task id="LOCAL-00001" summary="deneme">
       <created>1704186521929</created>
@@ -216,21 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704888300392</updated>
     </task>
-    <task id="LOCAL-00013" summary="hastalar doktorun departmanına göre randevu filtreleyebiliyor.">
-      <created>1704897564115</created>
+    <task id="LOCAL-00013" summary="hatayı düzelttim galiba şu anda düzgün çalışıyor">
+      <created>1704890298939</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1704897564115</updated>
+      <updated>1704890298939</updated>
     </task>
-    <task id="LOCAL-00014" summary="hastalar doktorun departmanına göre randevu filtreleyebiliyor.">
-      <created>1704897829747</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1704897829747</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +238,7 @@
     <MESSAGE value="PatientSignUp ı oluşturdum ama bunu giriş ekranına nasıl bağlarız emin değilim" />
     <MESSAGE value="Nurse ile ilgili değişiklikler yapıldı. Not: Çok iyi olmadı galiba ama gerekirse bir daha bakarız" />
     <MESSAGE value="doktor ekranına view room availability ekledim layout kısmına hepsini ekleyince bakarız diye düşündüm" />
-    <MESSAGE value="hastalar doktorun departmanına göre randevu filtreleyebiliyor." />
-    <option name="LAST_COMMIT_MESSAGE" value="hastalar doktorun departmanına göre randevu filtreleyebiliyor." />
+    <MESSAGE value="hatayı düzelttim galiba şu anda düzgün çalışıyor" />
+    <option name="LAST_COMMIT_MESSAGE" value="hatayı düzelttim galiba şu anda düzgün çalışıyor" />
   </component>
 </project>

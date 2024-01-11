@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class AdminView {
@@ -25,6 +27,16 @@ public class AdminView {
         add.addActionListener(e -> {
             addMedicalStaff();
             frame.dispose(); //bu satır yetiyor önceki pencereyi kapatmak için :p
+
+        });
+
+        JButton patientS = new JButton("Patient Statistics");
+        panel.add(patientS);
+
+        patientS.addActionListener(e -> {
+
+            showPatientStatistics();
+            //frame.dispose();
 
         });
 
@@ -168,7 +180,7 @@ public class AdminView {
 
             } catch (Exception ex) {
                 JFrame popup = new JFrame("Nope");
-                popup.add(new JLabel("Something went wrong"+ex));
+                popup.add(new JLabel("Something went wrong: "+ex));
                 popup.setMinimumSize(new Dimension(250, 150));
                 popup.setLocation(500, 200);
                 popup.setVisible(true);
@@ -180,6 +192,86 @@ public class AdminView {
 
 
 
+    }
+    public void showPatientStatistics(){
+        JFrame frame = new JFrame("Patient Statistics");
+       // frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setBounds(400,100,400,250);
+
+        frame.setResizable(false);
+        frame.setLayout(null);
+        Container c = frame.getContentPane();
+
+        JLabel startingDate = new JLabel("Starting Date");
+        startingDate.setSize(300, 30);
+        startingDate.setLocation(150, 10);
+        c.add(startingDate);
+
+        JTextField startingDateTxt = new JTextField(15); startingDateTxt.setText("");
+        startingDateTxt.setSize(250,30);
+        startingDateTxt.setLocation(270, 10);
+        c.add(startingDateTxt);
+
+
+        JLabel finishingDate = new JLabel("Finishing Date");
+        finishingDate.setSize(300, 30);
+        finishingDate.setLocation(150, 60);
+        c.add(finishingDate);
+
+        JTextField finishingDateTxt = new JTextField(15); finishingDateTxt.setText("");
+        finishingDateTxt.setSize(250,30);
+        finishingDateTxt.setLocation(270, 60);
+        c.add(finishingDateTxt);
+
+
+        JButton show = new JButton("Show");
+        show.setSize(100,30);
+        show.setLocation(270,260);
+        c.add(show);
+        show.addActionListener(e -> {
+            try {
+                String starting = startingDateTxt.getText();
+                String finishing = finishingDateTxt.getText();
+
+
+
+
+                PreparedStatement stmt = connection.prepareStatement("select dep.dep_name, count(a.patient_id)\n" +
+                        "from Appointment a, Department dep, Doctor d\n" +
+                        "where a.doctor_id = d.doctor_id AND dep.dep_id = d.dep_id AND ? < app_date AND\n" +
+                        "app_date < ? \n" +
+                        "group by dep.dep_id");
+                stmt.setString(1, String.valueOf(starting));
+                stmt.setString(2, String.valueOf(finishing));
+
+                ResultSet rs=stmt.executeQuery();
+                String patientStat="";
+                while(rs.next()){
+                   patientStat+= rs.getString(1) +": "+ rs.getString(2)+"\n";
+                }
+                JFrame popup = new JFrame("The number of patients over a time period and the\n" +
+                        "departments where they received medical care");
+                popup.add(new JTextArea(patientStat));
+                popup.setMinimumSize(new Dimension(300, 300));
+                popup.setLocation(500, 200);
+
+                popup.setVisible(true);
+            } catch (SQLException ex) {
+                JFrame popup = new JFrame("Nope");
+                popup.add(new JLabel("Please enter the date in this format: 2023-03-03"));
+                popup.setMinimumSize(new Dimension(500, 150));
+                popup.setLocation(500, 200);
+                popup.setVisible(true);
+            } catch (Exception ex) {
+                JFrame popup = new JFrame("Nope");
+                popup.add(new JLabel("Please enter the date in this format: 2023-03-03"));
+                popup.setMinimumSize(new Dimension(500, 150));
+                popup.setLocation(500, 200);
+                popup.setVisible(true);
+            }});
+
+            frame.setMinimumSize(new Dimension(700,400));
+        frame.setVisible(true);
     }
 
 }
