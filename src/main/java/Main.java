@@ -23,8 +23,8 @@ public class Main {
         //System.out.println(Cryptography.encrypt("pass123",Cryptography.generateSecretKey()));
 
         //PatientLogin  lg = new PatientLogin();
-        //DoctorView d = new DoctorView(102);
-        AdminView admin = new AdminView(401);
+        DoctorView d = new DoctorView(102);
+        //AdminView admin = new AdminView(401);
 
 
 

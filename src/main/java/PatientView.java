@@ -23,33 +23,44 @@ public class PatientView {
         //JLabel id = new JLabel("TC Kimlik No");
         //JTextField idTxt = new JTextField(15);
 
-
-
-        JLabel pass = new JLabel("If you want to search for a certain date range and department enter: (\"1938-10-09\" is the format you must follow)");
-        JTextField startDate = new JTextField(10);
-        startDate.setText("starting date");
-        JTextField endDate = new JTextField(10);
-        endDate.setText("ending date");
-        panel2.add(pass);
-
-        panel3.add(startDate); panel3.add(endDate);
-
         AtomicReference<String> start = new AtomicReference<>("1000-10-10");
         AtomicReference<String> end = new AtomicReference<>("3000-10-10");
         AtomicReference<String> department = new AtomicReference<>("");
 
+
+        JLabel pass = new JLabel("If you want to search for a certain date range and department enter: (\"1938-10-09\" is the format you must follow)");
+        JTextField startDate = new JTextField(10);
+        startDate.setText(start.get());
+        JTextField endDate = new JTextField(10);
+        endDate.setText(end.get());
+        panel2.add(pass);
+
+        panel3.add(startDate); panel3.add(endDate);
+
+
+
         JButton showApps = new JButton("Show Appointments");
         panel4.add(showApps);
-
-        showApps.addActionListener(e -> showAppsPatient(patientId, start.get(), end.get(), department.get()));
 
         String[] optionsDep = {"Select Department", "Cardiology", "Neurology","Orthopedics"};
         JComboBox<String>  depComboBox= new JComboBox<>(optionsDep);
 
         panel3.add(depComboBox);
 
+        showApps.addActionListener(e -> {
+            checkDateFormat(startDate.getText());
+            checkDateFormat(endDate.getText());
+            start.set(startDate.getText());
+            end.set(endDate.getText());
+            department.set((String)depComboBox.getSelectedItem());
+
+            showAppsPatient(patientId, start.get(), end.get(), department.get());
+        });
+
+
+
         JButton tarihTamam = new JButton("Apply");
-        panel3.add(tarihTamam);
+        //panel3.add(tarihTamam);
 
 
         tarihTamam.addActionListener(e -> { //oha java'da lambda notasyonu var lan
@@ -98,6 +109,7 @@ public class PatientView {
 
     /**
      * bunu daha yazmadım. beraber şaaparız.
+     * beraber şaaptık ama daha bitmedi. yapıcam akşam
      */
     private void newAppointmentFrame() {
         JFrame frame1 = new JFrame("New Appointment");

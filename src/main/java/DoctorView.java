@@ -15,7 +15,6 @@ public class DoctorView {
         JPanel panel = new JPanel();
         JPanel panel2 = new JPanel();
         JPanel panel3 = new JPanel();
-        JPanel panel5 = new JPanel();
         JPanel panel4 = new JPanel();//view
 
 
@@ -23,13 +22,14 @@ public class DoctorView {
         //JLabel id = new JLabel("TC Kimlik No");
         //JTextField idTxt = new JTextField(15);
 
+        AtomicReference<String> start = new AtomicReference<>("1000-10-10");
+        AtomicReference<String> end = new AtomicReference<>("3000-10-10");
 
-
-        JLabel pass = new JLabel("Belli bir tarih aralığını görmek istiyorsanız giriniz: (\"1938-10-09\" formatında girmezseniz çalışmam)");
+        JLabel pass = new JLabel("If you want to search for a certain date range and department enter: (\"1938-10-09\" is the format you must follow)");
         JTextField startDate = new JTextField(10);
-        startDate.setText("başlangıç");
+        startDate.setText(start.get());
         JTextField endDate = new JTextField(10);
-        endDate.setText("bitiş");
+        endDate.setText(end.get());
         panel2.add(pass);
 
         panel3.add(startDate); panel3.add(endDate);
@@ -37,13 +37,18 @@ public class DoctorView {
         JButton showApps = new JButton("Show Appointments");
         panel.add(showApps);
 
-        AtomicReference<String> start = new AtomicReference<>("1000-10-10");
-        AtomicReference<String> end = new AtomicReference<>("3000-10-10");
 
-        showApps.addActionListener(e -> showAppsDoctor(doctorId, start.get(), end.get())); //buradaki "get"lerin tam nasıl çalıştığını anladığımı söyleyemem
+
+        showApps.addActionListener(e -> {
+            PatientView.checkDateFormat(startDate.getText());
+            PatientView.checkDateFormat(endDate.getText());
+            start.set(startDate.getText());
+            end.set(endDate.getText());
+            showAppsDoctor(doctorId, start.get(), end.get());
+        }); //buradaki "get"lerin tam nasıl çalıştığını anladığımı söyleyemem
 
         JButton tarihTamam = new JButton("Tamam");
-        panel3.add(tarihTamam);
+        //panel3.add(tarihTamam);
         tarihTamam.addActionListener(e -> { //oha java'da lambda notasyonu var lan
             PatientView.checkDateFormat(startDate.getText());
             PatientView.checkDateFormat(endDate.getText());
@@ -91,7 +96,7 @@ public class DoctorView {
         frame.add(panel4);
 
 
-        frame.setLayout(new GridLayout(3,1));
+        frame.setLayout(new GridLayout(4,1));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(800,400));
         frame.setLocation(300,100);
