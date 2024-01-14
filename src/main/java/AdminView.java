@@ -28,6 +28,10 @@ public class AdminView {
 
         });
 
+
+
+
+
         JButton patientS = new JButton("Patient Statistics");
         panel.add(patientS);
 
@@ -85,11 +89,39 @@ public class AdminView {
             popup.setVisible(true);
 
         });
+        JButton doctorS = new JButton("Doctor Statistics");
+        panel.add(doctorS);
+
+        doctorS.addActionListener(e -> {
+            JFrame popup = new JFrame("doctor which books the most rooms for each department");
+            String doctorStat="";
+            try{
+                Statement stmt = DBConnection.getConnection().createStatement();
+                ResultSet rs = stmt.executeQuery("select max(count), T.doc_name, T.dep_name\n" +
+                        "from(select d.doctor_name as doc_name, d.dep_id as dep_id, dep.dep_name as dep_name, count(*) as count\n" +
+                        " from doctor d, assigns_room a, department dep\n" +
+                        " where d.doctor_id = a.doctor_id and d.dep_id = dep.dep_id\n" +
+                        " group by d.doctor_id) as T\n" +
+                        "group by T.dep_id,T.doc_name, T.dep_name;");
+                while(rs.next()){
+                    doctorStat += rs.getString(3) + ":  " + rs.getString(2) + "\n";
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+
+            popup.add(new JTextArea(doctorStat));
+            popup.setMinimumSize(new Dimension(300, 300));
+            popup.setLocation(500, 200);
+
+            popup.setVisible(true);
+
+        });
 
         JButton mostS = new JButton("Most Statistics");
-        panel.add(mostS);
+        //panel.add(mostS);
 
-        nurseS.addActionListener(e -> {
+        mostS.addActionListener(e -> {
             JFrame popup = new JFrame("The most booked room for each department");
             String mostStat="";
             try{

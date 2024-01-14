@@ -173,7 +173,8 @@ public class DoctorView {
             JButton assign = new JButton("Assign");
             assign.addActionListener(d -> {
                 int appID = Integer.parseInt((String) apps.getSelectedItem());
-                int nurseID = Integer.parseInt(nurses.getSelectedItem().toString().substring(0,2));
+                int nurseID = Integer.parseInt(nurses.getSelectedItem().toString().substring(0,3));
+                System.out.println(nurseID);
                 int roomID = Integer.parseInt((String)rooms.getSelectedItem());
                 String date ="";
                 try{

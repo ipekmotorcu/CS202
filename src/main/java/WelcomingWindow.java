@@ -9,13 +9,13 @@ public class WelcomingWindow {
         JPanel patient = new JPanel();
 
 
-        JButton patientButton = new JButton("Hastayım sana");
+        JButton patientButton = new JButton("Patient");
 
         patientButton.addActionListener(e -> {
             PatientLogin patientLogin = new PatientLogin();
         });
 
-        JButton doctorButton = new JButton("El çek ilacımdan tabib");
+        JButton doctorButton = new JButton("Doctor");
 
         doctorButton.addActionListener(e -> {
             DoctorLogin doctorLogin = new DoctorLogin();
