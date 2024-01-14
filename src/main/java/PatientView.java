@@ -1,8 +1,11 @@
 import javax.swing.*;
+import javax.swing.plaf.nimbus.State;
 import java.awt.*;
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -136,7 +139,10 @@ public class PatientView {
         starting_hour.setLocation(150, 60);
         c.add(starting_hour);
 
-        JTextField starting_hourTxt = new JTextField(15); starting_hourTxt.setText("");
+        //JTextField starting_hourTxt = new JTextField(15); starting_hourTxt.setText("");
+        String[] hours = {"08:00:00","09:00:00","10:00:00","11:00:00","12:00:00","13:00:00","14:00:00","15:00:00","16:00:00","17:00:00"};
+        DefaultComboBoxModel<String> starting_hourModel = new DefaultComboBoxModel<>(hours);
+        JComboBox<String> starting_hourTxt = new JComboBox<>(starting_hourModel);
         starting_hourTxt.setSize(250,30);
         starting_hourTxt.setLocation(270, 60);
         c.add(starting_hourTxt);
@@ -166,28 +172,83 @@ public class PatientView {
         c.add(enter);
         enter.addActionListener(e -> {
             //BURAYA TARİHİ FALAN KONTROL EDEN ZIKKIMAT EKLENECEK
-            /*
-            JLabel doctors = new JLabel("Doctor Name");
-            doctors.setSize(300, 30);
-            doctors.setLocation(150, 160);
-            c.add(doctors);*/
-
+            String date = dateTxt.getText();
+            checkDateFormat(date);
 
 
             //departmentTxt'ten departman ismini al
             //sql'le oradaki doktorların isimlerini çekip "docNmaes"e ekle.
+
+            String depName = departmentTxt.getText();
             String[] docNames = {"Select a Doctor"};
+
+            ArrayList<String> docNameIdPairs = new ArrayList<>(); //sabrım azalıyor
+            try{
+                Statement stmt = DBConnection.getConnection().createStatement();
+                ResultSet rs = stmt.executeQuery("select doctor_name, doctor_id from doctor d, department dep where d.dep_id = dep.dep_id and dep_name = '"+depName+"' ;");
+                while(rs.next()) {
+                    docNames = addToStringArray(docNames, rs.getString(1)); //bunu itlik olsun diye böyle yazdım
+                    docNameIdPairs.add(rs.getString(1)); docNameIdPairs.add(rs.getString(2));
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
 
             JComboBox doctorsCombo = new JComboBox(docNames); //departmentTxt.setText("");
             doctorsCombo.setSize(250,30);
             doctorsCombo.setLocation(270, 160);
             c.add(doctorsCombo);
-            System.out.println("lololo");
+            JLabel doctorName = new JLabel("Doctor Name");
+            doctorName.setSize(300, 30);
+            doctorName.setLocation(150, 160);
+            doctorName.setVisible(true);
+            c.add(doctorName);
+
+
+
+            JButton book = new JButton("Book");
+            book.setSize(100,30);
+            book.setLocation(400,210);
+            book.addActionListener(d -> {
+                //date;
+                String starting = (String)starting_hourTxt.getSelectedItem();
+                int endH = Integer.parseInt(starting.substring(0,2));
+                endH++;
+                String ending = String.valueOf(endH) + starting.substring(2,8);
+
+                //depName;
+                String docName = (String)doctorsCombo.getSelectedItem();
+                int indexOfId = docNameIdPairs.indexOf(docName)+1;
+                String docId = docNameIdPairs.get(indexOfId);
+                try{
+                    Statement stmt = DBConnection.getConnection().createStatement();
+                    ResultSet rs = stmt.executeQuery("select max(app_id) from appointment");
+                    int appID = (int)(Math.random()*600+100);
+                    while(rs.next())
+                        appID = Integer.parseInt(rs.getString(1))+1;
+                    stmt.executeUpdate("insert into appointment values ( "+appID+", '"+date+"', '"+starting+ "', '"+ending+ "', 'Scheduled', "+docId+ " , "+patientId+");");
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                System.out.println(date+starting+depName+docId);
+            });
+            c.add(book);
+
+            c.repaint();
             frame1.setVisible(true);
         });
 
         frame1.setMinimumSize(new Dimension(700,400));
         frame1.setVisible(true);
+    }
+
+    private String[] addToStringArray(String[] docNames, String string) {
+        int length = docNames.length+1;
+        String[] expanded = new String[length];
+        for(int i=0; i<length-1; i++)
+            expanded[i] = docNames[i];
+        expanded[length-1] = string;
+        return expanded;
     }
 
     private void appCancelFrame(int patientId) {
@@ -279,9 +340,9 @@ public class PatientView {
     protected static void checkDateFormat(String text) {
         String[] dates = text.split("-");
         if(dates.length != 3){
-            JFrame popup = new JFrame("HATA");
-            popup.add(new JLabel("Haspam düzgün yaz şu tarihleri"));
-            popup.add(new JLabel(" \"11-09-2001\" formatında olacak dedik bak"));
+            JFrame popup = new JFrame("ERROR");
+            popup.add(new JLabel("Enter the dates in the requested format!"));
+            popup.add(new JLabel(" \"2001-10-09\" is the form to follow"));
 
             popup.setLayout(new GridLayout(2,1));
             popup.setMinimumSize(new Dimension(600,70));
@@ -293,8 +354,8 @@ public class PatientView {
                     Integer.parseInt(s);
                 }
                 catch(NumberFormatException nfe){
-                    JFrame popup = new JFrame("yok");
-                    popup.add(new JLabel("tarihi bozuk yazıyosun"));
+                    JFrame popup = new JFrame("Nope");
+                    popup.add(new JLabel("You wrote the date wrong"));
                     popup.setVisible(true);
                 }
             }

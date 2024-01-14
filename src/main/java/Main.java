@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 
 public class Main {
@@ -26,8 +27,8 @@ public class Main {
         DoctorView d = new DoctorView(102);
         //AdminView admin = new AdminView(401);
 
-
-
+        int appID = (int)(Math.random()*100+600);
+        System.out.println(appID);
     }
 
     public static void denemeler(){

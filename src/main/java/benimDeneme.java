@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 /**
  * ismi iyi olmamış olabilir. yeni kayıt oluştururken bunu kullanırız diye düşündüm.
@@ -10,9 +11,21 @@ public class benimDeneme {
 
     public static void main(String[] args) throws Exception
     {
-        benimDeneme f = new benimDeneme();
+        //benimDeneme f = new benimDeneme();
+
+        String[] asd = {"1","2","3"};
+        asd = addToStringArray(asd, "lolo");
+        System.out.println(Arrays.stream(asd).toList());
     }
 
+    private static String[] addToStringArray(String[] docNames, String string) {
+        int length = docNames.length+1;
+        String[] expanded = new String[length];
+        for(int i=0; i<length-1; i++)
+            expanded[i] = docNames[i];
+        expanded[length-1] = string;
+        return expanded;
+    }
 
     public benimDeneme(){
         JFrame frame = new JFrame("Register Frame");
