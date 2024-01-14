@@ -87,7 +87,7 @@ public class DoctorView {
 
         JButton assignRoom = new JButton("Assign Room to an Appointment");
         assignRoom.addActionListener(e ->{
-            JFrame popup = new JFrame("Your Appointments");
+            JFrame popup = new JFrame("Assign Room");
             JTextArea textArea = new JTextArea();
             popup.setLayout(null);
             String[] appIds = new String[20];
@@ -168,25 +168,20 @@ public class DoctorView {
 
 
 
-
-
-
-
-
             JButton assign = new JButton("Assign");
             assign.addActionListener(d -> {
-                int appID = (Integer)apps.getSelectedItem();
+                int appID = Integer.parseInt((String) apps.getSelectedItem());
                 int nurseID = Integer.parseInt(nurses.getSelectedItem().toString().substring(0,2));
-                int roomID = (Integer)rooms.getSelectedItem();
+                int roomID = Integer.parseInt((String)rooms.getSelectedItem());
                 String date ="";
                 try{
                     Statement stmt = DBConnection.getConnection().createStatement();
-                    stmt.executeUpdate("insert into assigns_room values { "+ doctorId +" , "+ nurseID + " , " + roomID + " , "+ appID +" };");
+                    stmt.executeUpdate("insert into assigns_room values ( "+ doctorId +" , "+ nurseID + " , " + roomID + " , "+ appID +" );");
                     ResultSet rs = stmt.executeQuery("select app_date from appointment where app_id = "+ appID+" ;");
                     while(rs.next())
                         date = rs.getString(1);
 
-                    stmt.executeUpdate("insert into occupied values { "+ date+ " ,  08:00:00  ,   17:00:00  , " +roomID+ "} ;"); //BUNUN İÇİN APPOINTMENTS'TAN DATE'İ ALMAK LAZIM
+                    stmt.executeUpdate("insert into occupied values ( '"+ date+ "' ,  '08:00:00'  ,   '17:00:00'  , " +roomID+ ") ;"); //BUNUN İÇİN APPOINTMENTS'TAN DATE'İ ALMAK LAZIM
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -216,15 +211,17 @@ public class DoctorView {
             });
 
 
-
+            popup.add(new JLabel("Appointment id"));
             popup.add(apps);
+            popup.add(new JLabel("Nurse"));
             popup.add(nurses);
+            popup.add(new JLabel("Room Number"));
             popup.add(rooms);
             popup.add(assign);
 
 
 
-            popup.setLayout(new GridLayout(4,1));
+            popup.setLayout(new GridLayout(4,2));
             popup.setMinimumSize(new Dimension(600,400));
             popup.setVisible(true);
         });

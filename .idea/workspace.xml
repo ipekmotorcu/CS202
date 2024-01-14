@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="şu hâli bi committed dursun">
+    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="yan yana">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/benimDeneme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/benimDeneme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DoctorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DoctorView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +116,7 @@
       <workItem from="1704445833827" duration="6794000" />
       <workItem from="1704646400326" duration="2338000" />
       <workItem from="1704893919791" duration="2560000" />
-      <workItem from="1705231826970" duration="17422000" />
+      <workItem from="1705231826970" duration="18018000" />
     </task>
     <task id="LOCAL-00001" summary="deneme">
       <created>1704186521929</created>
@@ -225,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705246269873</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="yan yana">
+      <created>1705255528809</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1705255528809</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,6 +261,7 @@
     <MESSAGE value="hatayı düzelttim galiba şu anda düzgün çalışıyor" />
     <MESSAGE value="DoctorView'in tipi düzeltildi. PatientView da da bulunan apply butonu, vazifeleri showApp'e yüklenmek üzere, ilga edildi" />
     <MESSAGE value="şu hâli bi committed dursun" />
-    <option name="LAST_COMMIT_MESSAGE" value="şu hâli bi committed dursun" />
+    <MESSAGE value="yan yana" />
+    <option name="LAST_COMMIT_MESSAGE" value="yan yana" />
   </component>
 </project>
