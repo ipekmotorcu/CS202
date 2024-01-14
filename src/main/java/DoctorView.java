@@ -1,3 +1,5 @@
+import com.mysql.cj.protocol.x.ReusableOutputStream;
+
 import javax.swing.*;
 import javax.swing.plaf.nimbus.State;
 import javax.xml.transform.Result;
@@ -175,13 +177,23 @@ public class DoctorView {
                 int roomID = Integer.parseInt((String)rooms.getSelectedItem());
                 String date ="";
                 try{
+                    Statement stmt1 = DBConnection.getConnection().createStatement();
                     Statement stmt = DBConnection.getConnection().createStatement();
-                    stmt.executeUpdate("insert into assigns_room values ( "+ doctorId +" , "+ nurseID + " , " + roomID + " , "+ appID +" );");
-                    ResultSet rs = stmt.executeQuery("select app_date from appointment where app_id = "+ appID+" ;");
-                    while(rs.next())
-                        date = rs.getString(1);
+                    ResultSet rs1 = stmt1.executeQuery("select * from assigns_room where app_id = "+appID+" ;");
+                    if(!rs1.next()){
+                        stmt.executeUpdate("insert into assigns_room values ( "+ doctorId +" , "+ nurseID + " , " + roomID + " , "+ appID +" );");
+                        ResultSet rs = stmt.executeQuery("select app_date from appointment where app_id = "+ appID+" ;");
+                        while(rs.next())
+                            date = rs.getString(1);
 
-                    stmt.executeUpdate("insert into occupied values ( '"+ date+ "' ,  '08:00:00'  ,   '17:00:00'  , " +roomID+ ") ;"); //BUNUN İÇİN APPOINTMENTS'TAN DATE'İ ALMAK LAZIM
+                        stmt.executeUpdate("insert into occupied values ( '"+ date+ "' ,  '08:00:00'  ,   '17:00:00'  , " +roomID+ ") ;"); //BUNUN İÇİN APPOINTMENTS'TAN DATE'İ ALMAK LAZIM
+                    }
+                    else {
+                        JFrame error = new JFrame("Warning");
+                        error.add(new JLabel("That appointment already has a room assigned!"));
+                        error.setMinimumSize(new Dimension(400,200));
+                        error.setVisible(true);
+                    }
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }

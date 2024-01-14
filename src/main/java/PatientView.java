@@ -227,6 +227,7 @@ public class PatientView {
                     while(rs.next())
                         appID = Integer.parseInt(rs.getString(1))+1;
                     stmt.executeUpdate("insert into appointment values ( "+appID+", '"+date+"', '"+starting+ "', '"+ending+ "', 'Scheduled', "+docId+ " , "+patientId+");");
+                    stmt.executeUpdate("insert into Unavailability ");
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }

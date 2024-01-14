@@ -27,8 +27,7 @@ public class Main {
         DoctorView d = new DoctorView(102);
         //AdminView admin = new AdminView(401);
 
-        int appID = (int)(Math.random()*100+600);
-        System.out.println(appID);
+
     }
 
     public static void denemeler(){
