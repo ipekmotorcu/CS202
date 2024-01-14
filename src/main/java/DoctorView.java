@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.plaf.nimbus.State;
+import javax.xml.transform.Result;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -57,9 +59,7 @@ public class DoctorView {
         });
 
 
-        //panel.setLayout(new GridLayout());
         panel2.setLayout(new GridLayout());
-        //panel2.setLayout(new BoxLayout(panel2, BoxLayout.LINE_AXIS)); Olacak şey değil yahu
 
         JButton show = new JButton("View Room Availability");
         panel4.add(show);
@@ -82,25 +82,175 @@ public class DoctorView {
 
                 declareUnavailability(doctorId);
 
-
-
             }
         });
 
+        JButton assignRoom = new JButton("Assign Room to an Appointment");
+        assignRoom.addActionListener(e ->{
+            JFrame popup = new JFrame("Your Appointments");
+            JTextArea textArea = new JTextArea();
+            popup.setLayout(null);
+            String[] appIds = new String[20];
+            appIds[0] = "No appointments";
+
+            try{
+                Statement stmt = DBConnection.getConnection().createStatement();
+                ResultSet rs = stmt.executeQuery("select app_id from Appointment where doctor_id = "+doctorId+" ;");
+                for(int i=0; rs.next(); i++){
+                    if(i>=appIds.length)
+                        appIds = expandStringArray(appIds);
+                    appIds[i] = rs.getString(1);
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            JComboBox<String> apps = new JComboBox<>(appIds);
+
+            //JComboBox<String> apps = new JComboBox<>(appIds);
+            //int selectedAppId =  (Integer)apps.getSelectedItem(); EMİN BUNU DÜŞÜNECEK.
+
+
+            String[] nurseIds = new String[20];
+            try{
+                Statement stmt = DBConnection.getConnection().createStatement();
+                ResultSet rs = stmt.executeQuery("select nurse_id, nurse_name from Nurse;"); //BURADA ADINI DA YAZZ İNSAN BU
+                for(int i=0; rs.next(); i++){
+                    if(i>=nurseIds.length)
+                        nurseIds = expandStringArray(nurseIds);
+                    nurseIds[i] = rs.getString(1) + " "+rs.getString(2);
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            JComboBox<String> nurses = new JComboBox<>(nurseIds);
+
+
+            //int appId = (Integer)apps.getSelectedItem();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            int appId = 502;
+            String[] roomIds = new String[20];
+            try{
+                Statement stmt = DBConnection.getConnection().createStatement();
+                ResultSet rs = stmt.executeQuery("select r.room_id from Room r, Occupied o, Appointment a where r.room_id = o.room_id and r.room_id and a.app_id = "+appId+" " +
+                        "and a.app_date != o.occ_date;"); //DOUBLE CHECK
+                for(int i=0; rs.next(); i++){
+                    if(i>=roomIds.length)
+                        roomIds = expandStringArray(roomIds);
+                    roomIds[i] = rs.getString(1);
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            //JComboBox<String> rooms = new JComboBox<>(roomIds);
+            DefaultComboBoxModel<String> roomComboBoxModel = new DefaultComboBoxModel<>(roomIds);
+            JComboBox<String> rooms = new JComboBox<>(roomComboBoxModel);
+
+            popup.add(rooms);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            JButton assign = new JButton("Assign");
+            assign.addActionListener(d -> {
+                int appID = (Integer)apps.getSelectedItem();
+                int nurseID = Integer.parseInt(nurses.getSelectedItem().toString().substring(0,2));
+                int roomID = (Integer)rooms.getSelectedItem();
+                String date ="";
+                try{
+                    Statement stmt = DBConnection.getConnection().createStatement();
+                    stmt.executeUpdate("insert into assigns_room values { "+ doctorId +" , "+ nurseID + " , " + roomID + " , "+ appID +" };");
+                    ResultSet rs = stmt.executeQuery("select app_date from appointment where app_id = "+ appID+" ;");
+                    while(rs.next())
+                        date = rs.getString(1);
+
+                    stmt.executeUpdate("insert into occupied values { "+ date+ " ,  08:00:00  ,   17:00:00  , " +roomID+ "} ;"); //BUNUN İÇİN APPOINTMENTS'TAN DATE'İ ALMAK LAZIM
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+            popup.add(assign);
+
+            apps.addActionListener(f-> {
+                String[] roomIds2 = new String[10];
+                try{
+                    //int appId2 = Integer.parseInt((String) apps.getSelectedItem());
+                    int appId2 = Integer.parseInt((String) apps.getSelectedItem());
+                    Statement stmt = DBConnection.getConnection().createStatement();
+                    ResultSet rs = stmt.executeQuery("select r.room_id from Room r, Occupied o, Appointment a where r.room_id = o.room_id and r.room_id and a.app_id = "+appId2+" " +
+                            "and a.app_date != o.occ_date;"); //DOUBLE CHECK
+                    for(int i=0; rs.next(); i++){
+                        if(i>=roomIds2.length)
+                            roomIds2 = expandStringArray(roomIds2);
+                        roomIds2[i] = rs.getString(1);
+                    }
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                roomComboBoxModel.removeAllElements();
+                for(String s : roomIds2)
+                    roomComboBoxModel.addElement(s);
+            });
+
+
+
+            popup.add(apps);
+            popup.add(nurses);
+            popup.add(rooms);
+            popup.add(assign);
+
+
+
+            popup.setLayout(new GridLayout(4,1));
+            popup.setMinimumSize(new Dimension(600,400));
+            popup.setVisible(true);
+        });
+
+
+        panel.add(assignRoom);
 
 
         frame.add(panel2);
         frame.add(panel3);
         frame.add(panel);
-
         frame.add(panel4);
-
 
         frame.setLayout(new GridLayout(4,1));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(800,400));
         frame.setLocation(300,100);
         frame.setVisible(true);
+    }
+
+    private String[] expandStringArray(String[] appIds) {
+        int length = appIds.length;
+        String[] expanded = new String[length*2];
+        for(int i=0; i<length; i++)
+            expanded[i] = appIds[i];
+        return expanded;
     }
 
     private static void showAppsDoctor(int doctorId, String start, String end) {

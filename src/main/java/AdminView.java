@@ -1,11 +1,9 @@
 import javax.swing.*;
+import javax.swing.plaf.nimbus.State;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class AdminView {
@@ -33,10 +31,90 @@ public class AdminView {
         JButton patientS = new JButton("Patient Statistics");
         panel.add(patientS);
 
-        patientS.addActionListener(e -> {
+        patientS.addActionListener(e -> showPatientStatistics());
 
-            showPatientStatistics();
-            //frame.dispose();
+        JButton roomS = new JButton("Room Statistics");
+        panel.add(roomS);
+        roomS.addActionListener(e -> {
+            JFrame popup = new JFrame("Rooms booked to Appointment ratio for each department");
+            String roomStat="";
+            try{
+                Statement stmt = DBConnection.getConnection().createStatement();
+                ResultSet rs = stmt.executeQuery("select dep.dep_name, (count(s.app_id)/count(a.app_id))\n" +
+                        "from Appointment a natural left join assigns_room s, Department dep, Doctor d\n" +
+                        "where (a.doctor_id = d.doctor_id and dep.dep_id = d.dep_id)\n" +
+                        "group by dep.dep_id;");
+                while(rs.next()){
+                    roomStat += rs.getString(1) + ":  " + rs.getString(2) + "\n";
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+
+            popup.add(new JTextArea(roomStat));
+            popup.setMinimumSize(new Dimension(300, 300));
+            popup.setLocation(500, 200);
+
+            popup.setVisible(true);
+
+        });
+
+        JButton nurseS = new JButton("Nurse Statistics");
+        panel.add(nurseS);
+
+        nurseS.addActionListener(e -> {
+            JFrame popup = new JFrame("# of assigned unique nurses to rooms booked ratio for each department");
+            String nurseStat="";
+            try{
+                Statement stmt = DBConnection.getConnection().createStatement();
+                ResultSet rs = stmt.executeQuery("select dep.dep_name, count(distinct s.nurse_id)/count(s.room_id) \n" +
+                        "from assigns_room s, Doctor d, Department dep\n" +
+                        "where s.doctor_id = d.doctor_id and dep.dep_id = d.dep_id\n" +
+                        "group by dep.dep_id;");
+                while(rs.next()){
+                    nurseStat += rs.getString(1) + ":  " + rs.getString(2) + "\n";
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+
+            popup.add(new JTextArea(nurseStat));
+            popup.setMinimumSize(new Dimension(300, 300));
+            popup.setLocation(500, 200);
+
+            popup.setVisible(true);
+
+        });
+
+        JButton mostS = new JButton("Most Statistics");
+        panel.add(mostS);
+
+        nurseS.addActionListener(e -> {
+            JFrame popup = new JFrame("The most booked room for each department");
+            String mostStat="";
+            try{
+                Statement stmt = DBConnection.getConnection().createStatement();
+                ResultSet rs = stmt.executeQuery("select s.room_id, dep.dep_name\n" +
+                        "from assigns_room s, Doctor d, Department dep\n" +
+                        "where s.doctor_id = d.doctor_id and d.dep_id = dep.dep_id and (\n" +
+                        "(select count(*) from assigns_room s3 where s3.room_id=s.room_id)>= all(\n" +
+                        "select count(r.room_id)\n" +
+                        "from assigns_room s2, Room r\n" +
+                        "where s2.room_id = r.room_id and s2.doctor_id = d.doctor_id\n" +
+                        "group by r.room_id))\n" +
+                        "group by dep.dep_id");
+                while(rs.next()){
+                    mostStat += rs.getString(1) + ":  " + rs.getString(2) + "\n";
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+
+            popup.add(new JTextArea(mostStat));
+            popup.setMinimumSize(new Dimension(300, 300));
+            popup.setLocation(500, 200);
+
+            popup.setVisible(true);
 
         });
 
@@ -46,6 +124,9 @@ public class AdminView {
         frame.setLocation(300,100);
         frame.setVisible(true);
     }
+
+
+
     Connection connection = DBConnection.getConnection();
     public void addMedicalStaff(){
 
@@ -234,8 +315,6 @@ public class AdminView {
                 String finishing = finishingDateTxt.getText();
 
 
-
-
                 PreparedStatement stmt = connection.prepareStatement("select dep.dep_name, count(a.patient_id)\n" +
                         "from Appointment a, Department dep, Doctor d\n" +
                         "where a.doctor_id = d.doctor_id AND dep.dep_id = d.dep_id AND ? < app_date AND\n" +
@@ -249,10 +328,9 @@ public class AdminView {
                 while(rs.next()){
                    patientStat+= rs.getString(1) +": "+ rs.getString(2)+"\n";
                 }
-                JFrame popup = new JFrame("The number of patients over a time period and the\n" +
-                        "departments where they received medical care");
+                JFrame popup = new JFrame("The number of patients over a time period and the departments where they received medical care");
                 popup.add(new JTextArea(patientStat));
-                popup.setMinimumSize(new Dimension(300, 300));
+                popup.setMinimumSize(new Dimension(600, 300));
                 popup.setLocation(500, 200);
 
                 popup.setVisible(true);
