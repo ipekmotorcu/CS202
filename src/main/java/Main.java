@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         //PatientSignUp signUp = new PatientSignUp();
 
-        //PatientView patientView = new PatientView(302);
+        PatientView patientView = new PatientView(302);
 
         //WelcomingWindow welcomingWindow = new WelcomingWindow();
 
@@ -24,7 +24,7 @@ public class Main {
         //System.out.println(Cryptography.encrypt("pass123",Cryptography.generateSecretKey()));
 
         //PatientLogin  lg = new PatientLogin();
-        DoctorView d = new DoctorView(102);
+        //DoctorView d = new DoctorView(102);
         //AdminView admin = new AdminView(401);
 
 

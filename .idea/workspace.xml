@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="imla">
+    <list default="true" id="8233834e-6a4b-4ef6-b8f5-50d730d6836b" name="Changes" comment="devam">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DoctorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DoctorView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PatientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PatientView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +117,7 @@
       <workItem from="1704445833827" duration="6794000" />
       <workItem from="1704646400326" duration="2338000" />
       <workItem from="1704893919791" duration="2560000" />
-      <workItem from="1705231826970" duration="18804000" />
+      <workItem from="1705231826970" duration="20185000" />
     </task>
     <task id="LOCAL-00001" summary="deneme">
       <created>1704186521929</created>
@@ -238,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705256058279</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="devam">
+      <created>1705257081966</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1705257081966</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,6 +278,7 @@
     <MESSAGE value="şu hâli bi committed dursun" />
     <MESSAGE value="yan yana" />
     <MESSAGE value="imla" />
-    <option name="LAST_COMMIT_MESSAGE" value="imla" />
+    <MESSAGE value="devam" />
+    <option name="LAST_COMMIT_MESSAGE" value="devam" />
   </component>
 </project>

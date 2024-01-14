@@ -215,19 +215,31 @@ public class PatientView {
                 int endH = Integer.parseInt(starting.substring(0,2));
                 endH++;
                 String ending = String.valueOf(endH) + starting.substring(2,8);
-
+                starting = (String)starting_hourTxt.getSelectedItem();
                 //depName;
                 String docName = (String)doctorsCombo.getSelectedItem();
                 int indexOfId = docNameIdPairs.indexOf(docName)+1;
                 String docId = docNameIdPairs.get(indexOfId);
+
                 try{
                     Statement stmt = DBConnection.getConnection().createStatement();
+                    Statement stmt2 = DBConnection.getConnection().createStatement();
                     ResultSet rs = stmt.executeQuery("select max(app_id) from appointment");
                     int appID = (int)(Math.random()*600+100);
                     while(rs.next())
                         appID = Integer.parseInt(rs.getString(1))+1;
-                    stmt.executeUpdate("insert into appointment values ( "+appID+", '"+date+"', '"+starting+ "', '"+ending+ "', 'Scheduled', "+docId+ " , "+patientId+");");
-                    stmt.executeUpdate("insert into Unavailability ");
+                    ResultSet rs2 = stmt2.executeQuery("select * from Unavailability where doctor_id = "+docId+" and un_date = '"+date+"' and starting_hour = '"+starting+"';");
+
+                    if(!rs2.next()) {
+                        stmt.executeUpdate("insert into appointment values ( " + appID + ", '" + date + "', '" + starting + "', '" + ending + "', 'Scheduled', " + docId + " , " + patientId + ");");
+                        stmt.executeUpdate("insert into Unavailability values ('" + date + "', '" + starting + "', '" + ending + "', " + docId + ");");
+                    }
+                    else{
+                        JFrame error = new JFrame("Ups");
+                        error.add(new JLabel("Selected doctor is not available at the selected time"));
+                        error.setMinimumSize(new Dimension(400,300));
+                        error.setVisible(true);
+                    }
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
